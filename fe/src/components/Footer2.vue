@@ -34,7 +34,7 @@
             <v-btn
               plain
               dark
-              href="/about"
+              to="/about"
             >
               Privacy Policy
             </v-btn>
@@ -42,7 +42,7 @@
             <v-btn
               plain
               dark
-              href="/about"
+              to="/about"
             >
               Cookie Policy
             </v-btn>
@@ -92,6 +92,13 @@
               dark
             >
               Cash On Delivery
+            </v-btn>
+            <v-btn
+              plain
+              dark
+              to="/tg"
+            >
+              Test Ground
             </v-btn>
           </div>
         </v-col>

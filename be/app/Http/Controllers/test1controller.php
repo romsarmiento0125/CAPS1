@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\test1;
+use Illuminate\Support\Carbon;
 
 class test1controller extends Controller
 {
@@ -73,7 +74,15 @@ class test1controller extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $existingTest1 = test1::find($id);
+
+        if( $existingTest1 ){
+            $existingTest1->name = $request->test1['name'];
+            $existingTest1->save();
+            return $existingTest1;
+        }
+
+        return "Item Not Found";
     }
 
     /**
@@ -84,6 +93,12 @@ class test1controller extends Controller
      */
     public function destroy($id)
     {
-        //
+        $existingTest1 = test1::find( $id );
+        if( $existingTest1 ) {
+            $existingTest1->delete();
+            return "Item successfully deleted";
+        }
+
+        return "Item not found";
     }
 }
