@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import About from '../views/About.vue'
 import TestGround from '../views/TestGround.vue'
+import TestGround1 from '../views/TestGround1.vue'
 
 Vue.use(VueRouter)
 
@@ -21,6 +22,11 @@ const routes = [
     path: '/tg',
     name: 'TestGround',
     component: TestGround
+  },
+  {
+    path: '/tg1',
+    name: 'TestGround1',
+    component:TestGround1
   },
 ]
 

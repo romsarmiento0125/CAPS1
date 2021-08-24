@@ -10,6 +10,7 @@
   "dependencies": {
     "@vuelidate/core": "^2.0.0-alpha.24",
     "@vuelidate/validators": "^2.0.0-alpha.21",
+    "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
@@ -18,13 +19,12 @@
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-plugin-router": "~4.5.0",
     "@vue/cli-plugin-vuex": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "babel-eslint": "^10.1.0",
-    "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^6.2.2",
+    "eslint": "^7.32.0",
+    "eslint-plugin-vue": "^7.16.0",
     "sass": "~1.32.0",
     "sass-loader": "^10.0.0",
     "stylus": "^0.54.7",
