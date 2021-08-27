@@ -9,6 +9,8 @@
     >
       EMIT
     </v-btn>
+    <slot>Default Slot</slot>
+    <slot name="Links"></slot>
   </div>
 </template>
 

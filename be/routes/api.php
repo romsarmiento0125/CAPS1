@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\test1controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,11 +16,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
-});
-
-Route::get('/test1', [test1controller::class, 'index']);
-Route::prefix('/test1')->group(function () {
-    Route::post('/store', [test1controller::class, 'store']);
-    Route::put('/{id}', [test1controller::class, 'update']);
-    Route::delete('/{id}', [test1controller::class, 'destroy']);
 });

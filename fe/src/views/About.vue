@@ -1,9 +1,9 @@
 <template>
   <div>
-    <home-navbar1 class="d-none d-sm-flex"></home-navbar1>
-    <home-navbar2 class="d-flex d-sm-none"></home-navbar2>
+    <about-navbar1 class="d-none d-sm-flex"></about-navbar1>
+    <about-navbar2 class="d-flex d-sm-none"></about-navbar2>
 
-    <home-footer2></home-footer2>
+    <about-footer2></about-footer2>
   </div>
 </template>
 
@@ -13,12 +13,12 @@
   import Footer2 from '../components/Footer2.vue'
   
   export default{
-    name: 'Home',
+    name: 'about',
 
     components: {
-      'home-navbar1': NavBar1,
-      'home-navbar2': NavBar2,
-      'home-footer2': Footer2
+      'about-navbar1': NavBar1,
+      'about-navbar2': NavBar2,
+      'about-footer2': Footer2
     }
   }
 </script>

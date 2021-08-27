@@ -138,8 +138,15 @@
       </v-dialog>
     </div>
 
-    <!-- Sending Props to TestGroundOT.vue -->
-    <test-groundOT :subh="gagi" @something="hideList" ></test-groundOT>
+    <!-- Sending Props to TestGroundOT.vue "subh"-->
+    <!-- Receiving Emits from TestGroundOT.vue "something"-->
+    <!-- Sending Slots to TestGroundOT.vue "slot"-->
+    <test-groundOT :subh="gagi" @something="hideList" >
+      <h1>This is a slot</h1>
+      <template v-slot:Links>
+          <h2>This is from a named slot</h2>
+      </template>
+    </test-groundOT>
     <home-footer2></home-footer2>
   </div>
 </template>

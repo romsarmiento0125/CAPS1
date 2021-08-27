@@ -121,13 +121,15 @@
           <div
             class="d-flex justify-center my-3"
           >
-            <v-img
-              contain
-              src="../assets/3w.png"
-              max-height="100px"
-              max-width="100px"
-            >
-            </v-img>
+            <router-link to="/">
+              <v-img
+                contain
+                src="../assets/3w.png"
+                max-height="100px"
+                max-width="100px"
+              >
+              </v-img>
+            </router-link>
           </div>
         
           <div

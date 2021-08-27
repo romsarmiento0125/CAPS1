@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\test1;
-use Illuminate\Support\Carbon;
 
 class test1controller extends Controller
 {
@@ -15,7 +14,10 @@ class test1controller extends Controller
      */
     public function index()
     {
-        return test1::orderBy('created_at', 'DESC')->get();
+
+        return test1::all();
+        // return test1::where('id', '>', '20')->get();
+        
     }
 
     /**
@@ -36,11 +38,12 @@ class test1controller extends Controller
      */
     public function store(Request $request)
     {
-        $newtest1 = new test1;
-        $newtest1->name = $request->test1["name"];
-        $newtest1->save();
-
-        return $newtest1;
+        // $newtest1 = new test1;
+        // $newtest1->name = $request->test1["name"];
+        // $newtest1->save();
+        // return $newtest1;
+        $test1 = new test1;
+        return $test1->name = $request->input('name');
     }
 
     /**
@@ -51,7 +54,7 @@ class test1controller extends Controller
      */
     public function show($id)
     {
-        //
+        return view('test1.name', ['test1' => test1::findOrFail($id)]);
     }
 
     /**
@@ -91,14 +94,15 @@ class test1controller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(test1 $id)
     {
-        $existingTest1 = test1::find( $id );
-        if( $existingTest1 ) {
-            $existingTest1->delete();
-            return "Item successfully deleted";
-        }
+        // $existingTest1 = test1::find( $id );
+        // if( $existingTest1 ) {
+        //     $existingTest1->delete();
+        //     return "Item successfully deleted";
+        // }
 
-        return "Item not found";
+        // return "Item not found";
+        return $id->delete();
     }
 }

@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import About from '../views/About.vue'
 import TestGround from '../views/TestGround.vue'
 import TestGround1 from '../views/TestGround1.vue'
+import LoginSignup from '../views/LoginSignup.vue'
 
 Vue.use(VueRouter)
 
@@ -27,6 +28,11 @@ const routes = [
     path: '/tg1',
     name: 'TestGround1',
     component:TestGround1
+  },
+  {
+    path: '/:nt',
+    name: 'LoginSignup',
+    component:LoginSignup,
   },
 ]
 
