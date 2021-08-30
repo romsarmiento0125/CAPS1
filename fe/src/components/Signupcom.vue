@@ -60,6 +60,7 @@
                     Surname
                   </span>
                   <v-text-field
+                    v-model="clientinfo.Last_Name"
                     outlined
                     dense
                     class="mt-1"
@@ -78,6 +79,7 @@
                   Email Address
                 </span>
                 <v-text-field
+                  v-model="clientinfo.Email"
                   outlined
                   dense
                   class="mt-1"
@@ -93,6 +95,7 @@
                   Mobile Number
                 </span>
                 <v-text-field
+                  v-model="clientinfo.Mobile_Number"
                   outlined
                   dense
                   class="mt-1"
@@ -109,6 +112,7 @@
                   Home Adress
                 </span>
                 <v-text-field
+                  v-model="clientinfo.Home_Adress"
                   outlined
                   dense
                   class="mt-1"
@@ -125,6 +129,7 @@
                   Postal Code
                 </span>
                 <v-text-field
+                  v-model="clientinfo.Postal_code"
                   outlined
                   dense
                   class="mt-1"
@@ -141,6 +146,7 @@
                   City
                 </span>
                 <v-text-field
+                  v-model="clientinfo.City_Adress"
                   outlined
                   dense
                   class="mt-1"
@@ -157,6 +163,7 @@
                   Province
                 </span>
                 <v-text-field
+                  v-model="clientinfo.Province_Adress"
                   outlined
                   dense
                   class="mt-1"
@@ -173,6 +180,7 @@
                   New Password
                 </span>
                 <v-text-field
+                  v-model="clientinfo.Password"
                   type="password"
                   outlined
                   dense
@@ -189,6 +197,7 @@
                   Confirm Password
                 </span>
                 <v-text-field
+                  v-model="confirmPass"
                   type="password"
                   outlined
                   dense
@@ -292,7 +301,7 @@
           Province_Adress: "",
           Birthday: "",
           Gender: "",
-          Tag: "",
+          Tag: "Customer",
           Password: "",
           id: "",
         },
@@ -334,10 +343,7 @@
       passRules: [
         v => !!v || 'Password is required',
         v => (v && v.length >= 8) || 'Your password is too short',
-      ],
-      passRules: [
-        v => !!v || 'Birhtday is required',
-        v => (v && v.length >= 8) || 'Your password is too short',
+        v => (v && v.length <= 64) || 'Your password is too long',
       ],
     }),
     watch: {
@@ -363,12 +369,35 @@
         else{
           this.clientinfo.Gender = null;
         }
-        if( this.clientinfo.Birthday){
-          
+
+        if( this.clientinfo.Birthday === ""){
+          alert("Birthday is required");
         }
-        console.log(this.clientinfo.Birthday);
-        console.log(this.clientinfo.Gender);
-        console.log(this.clientinfo.First_Name);
+        else{
+          console.log("gg");
+          if( this.clientinfo.Last_Name != "" && this.clientinfo.Last_Name != "" && this.clientinfo.Email != "" && this.clientinfo.Mobile_Number.length == 11
+            && this.clientinfo.Home_Adress != "" && this.clientinfo.Postal_code != "" && this.clientinfo.City_Adress != "" && this.clientinfo.Province_Adress != ""
+            && this.clientinfo.Birthday != "" && this.clientinfo.Gender != "" && this.clientinfo.Password.length >= 8
+          ){
+            if( this.clientinfo.Last_Name.length <= 15 && this.clientinfo.Last_Name.length <= 15 && this.clientinfo.Home_Adress.length <= 80
+              && this.clientinfo.Postal_code.length <= 4 && this.clientinfo.City_Adress.length <= 20 && this.clientinfo.Province_Adress.length <= 20
+              && this.clientinfo.Password.length <= 64
+            ){
+              if( this.clientinfo.Password == this.confirmPass){
+                console.log("Axios firing");
+              }
+              else{
+                alert("Password does not match");
+              }
+            }
+            else{
+              alert("Check your inputs");
+            }
+          }
+          else{
+            alert("Check your inputs");
+          }
+        }
       }
     },
 
