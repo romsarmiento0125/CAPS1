@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\test1;
+use App\Models\test1;
 
-class test1controller extends Controller
+class testcontroller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +14,7 @@ class test1controller extends Controller
      */
     public function index()
     {
-
         return test1::all();
-        // return test1::where('id', '>', '20')->get();
-        
     }
 
     /**
@@ -38,12 +35,11 @@ class test1controller extends Controller
      */
     public function store(Request $request)
     {
-        // $newtest1 = new test1;
-        // $newtest1->name = $request->test1["name"];
-        // $newtest1->save();
-        // return $newtest1;
         $test1 = new test1;
-        return $test1->name = $request->input('name');
+        $test1->name = $request->test1['name'];
+        $test1->save();
+
+        return $test1;
     }
 
     /**
@@ -54,7 +50,7 @@ class test1controller extends Controller
      */
     public function show($id)
     {
-        return view('test1.name', ['test1' => test1::findOrFail($id)]);
+        //
     }
 
     /**
@@ -77,15 +73,13 @@ class test1controller extends Controller
      */
     public function update(Request $request, $id)
     {
-        $existingTest1 = test1::find($id);
-
-        if( $existingTest1 ){
-            $existingTest1->name = $request->test1['name'];
-            $existingTest1->save();
-            return $existingTest1;
+        $existingName = test1::find( $id );
+        if( $existingName ){
+            $existingName->name = $request->test1['name'];
+            $existingName->save();
+            return $existingName;
         }
-
-        return "Item Not Found";
+        return "no item";
     }
 
     /**
@@ -94,15 +88,13 @@ class test1controller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(test1 $id)
+    public function destroy($id)
     {
-        // $existingTest1 = test1::find( $id );
-        // if( $existingTest1 ) {
-        //     $existingTest1->delete();
-        //     return "Item successfully deleted";
-        // }
-
-        // return "Item not found";
-        return $id->delete();
+        $existingName = test1::find( $id );
+        if( $existingName ){
+            $existingName->delete();
+            return "item deleted";
+        }
+        return "no item";
     }
 }

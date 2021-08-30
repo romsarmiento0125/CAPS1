@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\testcontroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::get('/name', [testcontroller::class, 'index']);
+Route::prefix('/name')->group( function () {
+    Route::post('/store', [testcontroller::class, 'store']);
+    Route::put('/{id}', [testcontroller::class, 'update']);
+    Route::delete('/{id}', [testcontroller::class, 'destroy']);
 });
