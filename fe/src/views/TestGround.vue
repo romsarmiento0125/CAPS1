@@ -15,6 +15,11 @@
             v-model="test.name"
           ></v-text-field>
 
+          <v-text-field
+            label="Description"
+            v-model="test.desc"
+          ></v-text-field>
+
           <v-btn
             color="success"
             class="mr-4"
@@ -61,8 +66,146 @@
               <div
                 class="d-flex"
               >
-                <p v-text="data.id + '-'"></p>
-                <p v-text="data.name"></p>
+                <p v-text="data.id + '<>'"></p>
+                <p v-text="data.name + '<>'"></p>
+                <p v-text="data.desc"></p>
+              </div>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
+      </v-container>
+    </div>
+
+    <v-spacer></v-spacer>
+    <v-divider></v-divider>
+    <v-spacer></v-spacer>
+
+    <div>
+      <v-container
+        class="my-10"
+      >
+        <v-form
+          ref="form"
+        >
+          <v-text-field
+            label="First Name"
+            v-model="clientinfo.First_Name"
+          ></v-text-field>
+
+          <v-text-field
+            label="Last Name"
+            v-model="clientinfo.Last_Name"
+          ></v-text-field>
+
+          <v-text-field
+            label="Email"
+            v-model="clientinfo.Email"
+          ></v-text-field>
+
+          <v-text-field
+            label="Mobile Number"
+            v-model="clientinfo.Mobile_Number"
+          ></v-text-field>
+
+          <v-text-field
+            label="Adress"
+            v-model="clientinfo.Home_Adress"
+          ></v-text-field>
+
+          <v-text-field
+            label="Postal Code"
+            v-model="clientinfo.Postal_code"
+          ></v-text-field>
+
+          <v-text-field
+            label="City"
+            v-model="clientinfo.City_Adress"
+          ></v-text-field>
+
+          <v-text-field
+            label="Province"
+            v-model="clientinfo.Province_Adress"
+          ></v-text-field>
+
+          <v-text-field
+            label="Birthday"
+            v-model="clientinfo.Birthday"
+          ></v-text-field>
+
+          <v-text-field
+            label="Gender"
+            v-model="clientinfo.Gender"
+          ></v-text-field>
+
+          <v-text-field
+            label="Tag"
+            v-model="clientinfo.Tag"
+          ></v-text-field>
+
+          <v-text-field
+            label="Password"
+            v-model="clientinfo.Password"
+          ></v-text-field>
+
+          <v-btn
+            color="success"
+            class="mr-4"
+            @click="addItemO()"
+          >
+            Add
+          </v-btn>
+
+          <v-btn
+            color="error"
+            class="mr-4"
+            @click="deleteItemO()"
+          >
+            Delete
+          </v-btn>
+
+          <v-btn
+            color="warning"
+            class="mr-4"
+            @click="updateItemO()"
+          >
+            Update
+          </v-btn>
+
+          <v-btn
+            color="primary"
+            @click="getItemO()"
+          >
+            Get
+          </v-btn>
+
+          <v-text-field
+            label="Id"
+            v-model="clientinfo.id"
+          ></v-text-field>
+
+        </v-form>
+        <v-list>
+          <v-list-item
+            v-for="client in clients"
+            :key="client.id"
+          >
+            <v-list-item-content>
+              <div
+                class="font-weight-black"
+              >
+                <p v-text="'ID: ' + client.id"></p>
+                <p v-text="'First Name: ' + client.First_Name"></p>
+                <p v-text="'Last Name: ' + client.Last_Name"></p>
+                <p v-text="'Email: ' + client.Email"></p>
+                <p v-text="'Mobile #: ' + '0' + client.Mobile_Number"></p>
+                <p v-text="'Adress: ' + client.Home_Adress"></p>
+                <p v-text="'Postal Code: ' + client.Postal_code"></p>
+                <p v-text="'City: ' + client.City_Adress"></p>
+                <p v-text="'Province: ' + client.Province_Adress"></p>
+                <p v-text="'Birthday: ' + client.Birthday"></p>
+                <p v-text="'Gender: ' + client.Gender"></p>
+                <p v-text="'Tag: ' + client.Tag"></p>
+                <p v-text="'Password: ' + client.Password"></p>
               </div>
             </v-list-item-content>
           </v-list-item>
@@ -94,9 +237,28 @@
       return{
         test: {
           name: "",
+          desc: "",
           id: ""
         },
-        datas: []
+        datas: [],
+
+        clientinfo: {
+          First_Name: "",
+          Last_Name: "",
+          Mobile_Number: "",
+          Email: "",
+          Home_Adress: "",
+          Postal_code: "",
+          City_Adress: "",
+          Province_Adress: "",
+          Birthday: "",
+          Gender: "",
+          Tag: "",
+          Password: "",
+          id: "",
+        },
+        clients: [],
+
       }
     },
 
@@ -150,6 +312,37 @@
       deleteItem() {
         console.log("delete item");
         axios.delete('http://127.0.0.1:8000/api/name/' + this.test.id)
+        .then(res => console.log(res.data))
+        .catch(err => console.error(err))
+      },
+
+      getItemO() {
+        console.log("get item");
+        axios.get('http://127.0.0.1:8000/api/clients')
+        //.then(res => console.log(res))
+        .then(res => this.clients = res.data)
+        .catch(err => console.error(err))
+        console.log(this.datas);
+      },
+      addItemO() {
+        console.log('add item');
+        axios.post('http://127.0.0.1:8000/api/clients/store',{
+          register: this.clientinfo
+        })
+        .then(res => this.clients = res.data)
+        .catch(err => console.error(err))
+      },
+      updateItemO() {
+        console.log("update item");
+        axios.put('http://127.0.0.1:8000/api/clients/' + this.clientinfo.id,{
+          register: this.clientinfo
+        })
+        .then(res => this.datas = res.data)
+        .catch(err => console.error(err))
+      },
+      deleteItemO() {
+        console.log("delete item");
+        axios.delete('http://127.0.0.1:8000/api/clients/' + this.clientinfo.id)
         .then(res => console.log(res.data))
         .catch(err => console.error(err))
       }

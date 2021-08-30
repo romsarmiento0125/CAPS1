@@ -1,9 +1,9 @@
 <?php
 
+use App\Http\Controllers\clientcontroller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\testcontroller;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -24,4 +24,11 @@ Route::prefix('/name')->group( function () {
     Route::post('/store', [testcontroller::class, 'store']);
     Route::put('/{id}', [testcontroller::class, 'update']);
     Route::delete('/{id}', [testcontroller::class, 'destroy']);
+});
+
+Route::get('/clients', [clientcontroller::class, 'index']);
+Route::prefix('/clients')->group( function () {
+    Route::post('/store', [clientcontroller::class, 'store']);
+    Route::put('/{id}', [clientcontroller::class, 'update']);
+    Route::delete('/{id}', [clientcontroller::class, 'destroy']);
 });

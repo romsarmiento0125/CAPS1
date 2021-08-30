@@ -37,6 +37,7 @@ class testcontroller extends Controller
     {
         $test1 = new test1;
         $test1->name = $request->test1['name'];
+        $test1->desc = $request->test1['desc'];
         $test1->save();
 
         return $test1;
