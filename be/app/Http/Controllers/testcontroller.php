@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\clients;
 use Illuminate\Http\Request;
 use App\Models\test1;
 
@@ -14,7 +15,16 @@ class testcontroller extends Controller
      */
     public function index()
     {
+        //$user = test1::table('test1s');
         return test1::all();
+        //return $user;
+
+        //$user = collect(['name']);
+        //return $user;
+
+        //$user = test1::get()->where('name', 'pers');
+        //$user = json_decode($user, true);
+        //return $user[0]['name'];
     }
 
     /**

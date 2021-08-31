@@ -15,7 +15,7 @@ class CreateTest1sTable extends Migration
     {
         Schema::create('test1s', function (Blueprint $table) {
             $table->id();
-            $table->string("name");
+            $table->string("name")->unique();
             $table->string('desc');
             $table->timestamps();
         });

@@ -46,9 +46,17 @@
 
           <v-btn
             color="primary"
+            class="mr-4"
             @click="getItem()"
           >
             Get
+          </v-btn>
+
+          <v-btn
+            color="primary"
+            @click="validateItem()"
+          >
+            Validate and Add
           </v-btn>
 
           <v-text-field
@@ -240,7 +248,8 @@
           desc: "",
           id: ""
         },
-        datas: [],
+        datas: {},
+        validate: {},
 
         clientinfo: {
           First_Name: "",
@@ -257,31 +266,10 @@
           Password: "",
           id: "",
         },
-        clients: [],
+        clients: {},
 
       }
     },
-
-    // methods: {
-    //   addItem() {
-    //     if( this.test1.name == "" ) {
-    //       return;
-    //     }
-
-    //     axios.post('http://127.0.0.1:8000/api/test1/store', {
-    //       test1: this.test1
-    //     })
-    //     .then( response => {
-    //       if( response.status == 201 ) {
-    //         this.test1.name == "";
-    //       }
-    //     })
-    //     .catch( error => {
-    //       console.log(error);
-    //     })
-    //   }
-    // }
-
 
     // yung name na test1 dapat ay same doon sa ni rrequest sa store
     // yung name na test ay dapat katulad doon sa v-model
@@ -291,15 +279,14 @@
         axios.post('http://127.0.0.1:8000/api/name/store',{
           test1: this.test
         })
-        .then(res => this.name = res.data)
-        .catch(err => console.error(err))
+        .then(res => this.refreshPage(res.data))
+        .catch(err => console.error(err));
       },
       getItem() {
         console.log("get item");
         axios.get('http://127.0.0.1:8000/api/name')
         .then(res => this.datas = res.data)
-        .catch(err => console.error(err))
-        console.log(this.datas);
+        .catch(err => console.error(err));
       },
       updateItem() {
         console.log("update item");
@@ -307,13 +294,43 @@
           test1: this.test
         })
         .then(res => this.datas = res.data)
-        .catch(err => console.error(err))
+        .catch(err => console.error(err));
       },
       deleteItem() {
         console.log("delete item");
         axios.delete('http://127.0.0.1:8000/api/name/' + this.test.id)
         .then(res => console.log(res.data))
-        .catch(err => console.error(err))
+        .catch(err => console.error(err));
+      },
+      validateItem() {
+        console.log("Validate item");
+        axios.get('http://127.0.0.1:8000/api/name')
+        .then(res => this.duplicationChecking(res.data))
+        //.then(res => console.log(res.data))
+        .catch(err => console.error(err));
+      },
+      duplicationChecking(data) {
+        console.log('duplication');
+        this.validate = JSON.parse(JSON.stringify(data));
+        console.log(this.validate.length);
+        var tf = true;
+        for(var i = 0; i < this.validate.length; i++){
+          if(this.test.name == this.validate[i]['name']){
+            alert("name exist dont fire axios end loop");
+            tf = false;
+            i = this.validate.length + 1;
+          }
+        }
+        if(tf){
+          alert("fire axios");
+          this.addItem();
+        }
+      },
+
+      refreshPage(data){
+        this.clientinfo = data;
+        console.log(this.clientinfo);
+        alert("Data added succesfullt");
       },
 
       getItemO() {
@@ -321,7 +338,7 @@
         axios.get('http://127.0.0.1:8000/api/clients')
         //.then(res => console.log(res))
         .then(res => this.clients = res.data)
-        .catch(err => console.error(err))
+        .catch(err => console.error(err));
         console.log(this.datas);
       },
       addItemO() {
@@ -330,7 +347,7 @@
           register: this.clientinfo
         })
         .then(res => this.clients = res.data)
-        .catch(err => console.error(err))
+        .catch(err => console.error(err));
       },
       updateItemO() {
         console.log("update item");
@@ -338,13 +355,13 @@
           register: this.clientinfo
         })
         .then(res => this.datas = res.data)
-        .catch(err => console.error(err))
+        .catch(err => console.error(err));
       },
       deleteItemO() {
         console.log("delete item");
         axios.delete('http://127.0.0.1:8000/api/clients/' + this.clientinfo.id)
         .then(res => console.log(res.data))
-        .catch(err => console.error(err))
+        .catch(err => console.error(err));
       }
     },
   }

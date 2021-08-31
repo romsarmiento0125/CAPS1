@@ -305,7 +305,8 @@
           Password: "",
           id: "",
         },
-      clients: [],
+      clients: {},
+      emailValidation: {},
 
       valid: true,
       fnameRules: [
@@ -384,20 +385,51 @@
               && this.clientinfo.Password.length <= 64
             ){
               if( this.clientinfo.Password == this.confirmPass){
-                console.log("Axios firing");
+                console.log("Validation start.");
+                axios.get('http://127.0.0.1:8000/api/clients')
+                .then(res => this.emailDuplicationChecking(res.data))
+                .catch(err => console.error(err));
               }
               else{
-                alert("Password does not match");
+                alert("Password does not match.");
               }
             }
             else{
-              alert("Check your inputs");
+              alert("Check your inputs.");
             }
           }
           else{
-            alert("Check your inputs");
+            alert("Check your inputs.");
           }
         }
+      },
+      emailDuplicationChecking(data) {
+        console.log('duplication checking');
+        this.emailValidation = JSON.parse(JSON.stringify(data));
+        console.log(this.emailValidation.length);
+        var tf = true;
+        for(var i = 0; i < this.emailValidation.length; i++){
+          if(this.clientinfo.Email == this.emailValidation[i]['Email']){
+            alert("Email already exist.");
+            tf = false;
+            i = this.emailValidation.length + 1;
+          }
+        }
+        if(tf){
+          this.axiosFire();
+        }
+      },
+      axiosFire() {
+        axios.post('http://127.0.0.1:8000/api/clients/store',{
+          register: this.clientinfo
+        })
+        .then(res => this.goingHome(res.data))
+        .catch(err => console.error(err));
+      },
+      goingHome(data) {
+        this.clients = data;
+        console.log(this.clients);
+        alert("Account created successfully");
       }
     },
 

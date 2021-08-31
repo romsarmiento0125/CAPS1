@@ -36,6 +36,7 @@ class clientcontroller extends Controller
     public function store(Request $request)
     {
         $register = new clients();
+
         $register->First_Name = $request->register['First_Name'];
         $register->Last_Name = $request->register['Last_Name'];
         $register->Mobile_Number = $request->register['Mobile_Number'];
@@ -85,6 +86,8 @@ class clientcontroller extends Controller
     public function update(Request $request, $id)
     {
         $existingName =clients::find( $id );
+
+        
         if( $existingName ){
             $existingName->First_Name = $request->register['First_Name'];
             $existingName->Last_Name = $request->register['Last_Name'];
