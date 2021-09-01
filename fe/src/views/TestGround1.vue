@@ -3,6 +3,7 @@
     <home-navbar1 class="d-none d-sm-flex"></home-navbar1>
     <home-navbar2 class="d-flex d-sm-none"></home-navbar2>
     <!-- gago -->
+    <!-- gago ka din -->
     <div>
       <v-container
         class="my-10"
