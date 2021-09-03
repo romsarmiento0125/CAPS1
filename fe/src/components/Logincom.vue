@@ -40,6 +40,7 @@
                 outlined
                 dense
                 class="mt-1"
+                v-model="clientLogin.Email"
               ></v-text-field>
             </v-card-text>
 
@@ -54,6 +55,7 @@
                 outlined
                 dense
                 class="mt-1"
+                v-model="clientLogin.Password"
               ></v-text-field>
             </v-card-text>
 
@@ -71,6 +73,7 @@
             <v-btn
               class="rounded-lg"
               color="primary"
+              @click="userLogin"
             >
               Sign in
             </v-btn>
@@ -90,18 +93,71 @@
                 LOGIN WITH FACEBOOK
               </v-btn>
             </v-card-text>
-            
           </v-card>
         </v-col>
       </v-row>
     </v-container>
+    <!-- <v-list>
+      <v-list-item
+        v-for="customerInfo in customerInfos"
+        :key="customerInfo.id"
+      >
+        <v-list-item-content>
+          <div
+            class="d-flex"
+          >
+            <p>{{customerInfo.First_Name}}</p>
+            <p>gg</p>
+            <p></p>
+          </div>
+        </v-list-item-content>
+      </v-list-item>
+    </v-list> -->
   </div>
 </template>
 
 <script>
 
   export default {
- 
+    name: 'Login',
+    
+    data: () => ({
+      clientLogin:{
+        Email: 'rom@gmail.com',
+        Password: 'admin123',
+      },
+    }),
+
+    computed: {
+      customerInfos() {
+        return this.$store.state.customerInfos;
+      }
+    },
+
+    methods: {
+      sendCredentials() {
+        console.log('Login');
+        axios.post('http://127.0.0.1:8000/api/login/store',{
+          clientCred: this.clientLogin
+        })
+        .then(res => console.log(res.data))
+        .catch(err => console.error(err))
+      },
+      userLogin() {
+        console.log("User Login");
+        this.$store.dispatch('getData', this.clientLogin);
+        setTimeout(this.loginConfirmation, 1000);
+      },
+      loginConfirmation() {
+        console.log('Login Confirmation');
+        if(this.customerInfos == "Wrong credentials"){
+          alert(this.customerInfos);
+        }
+        else{
+          this.$router.push('/');
+        }
+      }
+    }
 
   }
 </script>
