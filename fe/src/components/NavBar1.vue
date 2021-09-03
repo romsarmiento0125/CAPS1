@@ -83,6 +83,7 @@
                   height="auto"
                   dark
                   text
+                  to="/Login"
                 >
                   <v-icon
                     large

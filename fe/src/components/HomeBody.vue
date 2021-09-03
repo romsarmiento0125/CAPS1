@@ -14,7 +14,7 @@
           <v-row>
             <v-col
               v-for="item in items"
-              :key="item.title"
+              :key="item.id"
               cols="6"
               sm="4"
               md="3"
@@ -26,10 +26,10 @@
               >
                 <v-img
                   height="65%"
-                  :src="require('../assets/items/'+item.iname)"
+                  :src="require('../assets/items/'+item.Product_Image)"
                 ></v-img>
 
-                <v-card-title class="ma-0 pb-0">TEST</v-card-title>
+                <v-card-title class="ma-0 pb-0">{{item.Product_Name}}</v-card-title>
 
                 <v-card-actions
                   class="ma-0 py-0 pr-0"
@@ -40,7 +40,7 @@
                     >
                       mdi-currency-php
                     </v-icon>
-                    <span class="blue--text">99999</span>
+                    <span class="blue--text">{{item.Product_Price}}</span>
                   </div>
 
                   <v-spacer></v-spacer>
@@ -50,6 +50,7 @@
                     text
                     x-large
                     class="pr-0"
+                    @click="addToCart"
                   >
                     <v-icon
                       size="60"
@@ -68,34 +69,46 @@
 <script>
   export default {
     data: () => ({
-      items: [
-        { iname: "1.jpg" },
-        { iname: "2.jpg" },
-        { iname: "3.jpg" },
-        { iname: "4.jpg" },
-        { iname: "5.jpg" },
-        { iname: "6.jpg" },
-        { iname: "7.jpg" },
-        { iname: "8.jpg" },
-        { iname: "9.jpg" },
-        { iname: "10.jpg" },
-        { iname: "11.jpg" },
-        { iname: "12.jpg" },
-        { iname: "13.jpg" },
-        { iname: "14.jpg" },
-        { iname: "15.jpg" },
-      ],
+      // items: [
+      //   { iname: "1.jpg" },
+      //   { iname: "2.jpg" },
+      //   { iname: "3.jpg" },
+      //   { iname: "4.jpg" },
+      //   { iname: "5.jpg" },
+      //   { iname: "6.jpg" },
+      //   { iname: "7.jpg" },
+      //   { iname: "8.jpg" },
+      //   { iname: "9.jpg" },
+      //   { iname: "10.jpg" },
+      //   { iname: "11.jpg" },
+      //   { iname: "12.jpg" },
+      //   { iname: "13.jpg" },
+      //   { iname: "14.jpg" },
+      //   { iname: "15.jpg" },
+      // ],
+      items: {},
     }),
 
     methods: {
       getItems() {
         console.log("get items");
-        
+         axios.get('http://127.0.0.1:8000/api/products')
+        .then(res => this.items = res.data)
+        .catch(err => console.error(err));
+      },
+      addToCart() {
+        console.log("add to cart");
+        if(this.customerInfos.Tag == "Customer"){
+          console.log("login");
+        }
+        else{
+          this.$router.push('/Login');
+        }
       }
     },
 
     beforeMount(){
-        this.getItems();
+      this.getItems();
     },
 
     computed: {
