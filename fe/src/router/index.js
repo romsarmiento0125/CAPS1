@@ -5,6 +5,7 @@ import About from '../views/About.vue'
 import TestGround from '../views/TestGround.vue'
 import TestGround1 from '../views/TestGround1.vue'
 import LoginSignup from '../views/LoginSignup.vue'
+import SterGround from '../views/SterGround.vue'
 
 Vue.use(VueRouter)
 
@@ -30,10 +31,17 @@ const routes = [
     component:TestGround1
   },
   {
+    path: '/ster',
+    name:'SterGround',
+    component:SterGround,
+  
+  },
+  {
     path: '/:nt',
     name: 'LoginSignup',
     component:LoginSignup,
   },
+  
 ]
 
 const router = new VueRouter({
