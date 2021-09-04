@@ -150,7 +150,7 @@
     <home-footer2></home-footer2>
   </div>
 </template>
-
+  
 <script>
   import NavBar1 from '../components/NavBar1.vue'
   import NavBar2 from '../components/NavBar2.vue'
