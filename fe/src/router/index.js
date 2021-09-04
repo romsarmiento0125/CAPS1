@@ -37,6 +37,8 @@ const routes = [
     component:SterGround,
   
   },
+  
+
   {
     path: '/cart',
     name: 'ShoppingCart',
