@@ -30,6 +30,7 @@
                 ></v-img>
 
                 <v-card-title class="ma-0 pb-0">{{item.Product_Name}}</v-card-title>
+                <!-- <v-card-subtitle class="ma-0 pb-0">{{item.Product_Description}}</v-card-subtitle> -->
 
                 <v-card-actions
                   class="ma-0 py-0 pr-0"
