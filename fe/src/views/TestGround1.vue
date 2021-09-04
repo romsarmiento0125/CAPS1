@@ -159,7 +159,7 @@
   import TestGroundOT from '../components/TestGroundOT.vue'
   
   export default{
-    name: 'Home',
+    name: 'TestGround1',
 
     components: {
       'home-navbar1': NavBar1,

@@ -6,6 +6,7 @@ import TestGround from '../views/TestGround.vue'
 import TestGround1 from '../views/TestGround1.vue'
 import LoginSignup from '../views/LoginSignup.vue'
 import SterGround from '../views/SterGround.vue'
+import ShoppingCart from '../views/ShoppingCart'
 
 Vue.use(VueRouter)
 
@@ -32,9 +33,14 @@ const routes = [
   },
   {
     path: '/ster',
-    name:'SterGround',
+    name: 'SterGround',
     component:SterGround,
   
+  },
+  {
+    path: '/cart',
+    name: 'ShoppingCart',
+    component: ShoppingCart,
   },
   {
     path: '/:nt',

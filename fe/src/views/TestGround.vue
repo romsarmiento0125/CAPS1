@@ -310,7 +310,7 @@
   //import { axios } from '@/plugins/axios'
   
   export default{
-    name: 'Home',
+    name: 'TestGround',
 
     components: {
       'home-navbar1': NavBar1,

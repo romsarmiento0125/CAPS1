@@ -20,11 +20,9 @@ class CreateClientsTable extends Migration
             $table->bigInteger('Mobile_Number');
             $table->string('Email')->unique();
             $table->string('Home_Adress');
-            $table->string('Postal_code');
             $table->string('City_Adress');
             $table->string('Province_Adress');
             $table->string('Birthday');
-            $table->string('Gender');
             $table->string('Tag');
             $table->string('Password');
             $table->timestamps();

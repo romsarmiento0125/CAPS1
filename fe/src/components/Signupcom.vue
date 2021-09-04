@@ -47,7 +47,6 @@
                     outlined
                     dense
                     class="mt-1"
-                    :counter="15"
                     :rules="fnameRules"
                     required
                   ></v-text-field>
@@ -64,7 +63,6 @@
                     outlined
                     dense
                     class="mt-1"
-                    :counter="15"
                     :rules="snameRules"
                     required
                   ></v-text-field>
@@ -118,23 +116,6 @@
                   class="mt-1"
                   :counter="80"
                   :rules="homeRules"
-                  required
-                ></v-text-field>
-              </v-card-text>
-
-              <v-card-text
-                class="pa-0"
-              >
-                <span>
-                  Postal Code
-                </span>
-                <v-text-field
-                  v-model="clientinfo.Postal_code"
-                  outlined
-                  dense
-                  class="mt-1"
-                  :counter="4"
-                  :rules="posCodeRules"
                   required
                 ></v-text-field>
               </v-card-text>
@@ -240,27 +221,6 @@
               </div>
 
               <v-card-text
-                class="pa-0 mt-1"
-              >
-                <div>
-                  <span>
-                    Gender
-                  </span>
-                  <v-radio-group v-model="radioGender" row class="mt-0">
-                    <v-radio
-                      label="Female"
-                    ></v-radio>
-                    <v-radio
-                      label="Male"
-                    ></v-radio>
-                    <v-radio
-                      label="Custom"
-                    ></v-radio>
-                  </v-radio-group>
-                </div>
-              </v-card-text>
-
-              <v-card-text
                 class="d-flex justify-center pb-0"
               >
                 <v-btn
@@ -287,7 +247,6 @@
     data: () => ({
       activePicker: null,
       menu: false,
-      radioGender: 0,
       confirmPass: "",
 
       clientinfo: {
@@ -296,11 +255,9 @@
           Mobile_Number: "",
           Email: "",
           Home_Adress: "",
-          Postal_code: "",
           City_Adress: "",
           Province_Adress: "",
           Birthday: "",
-          Gender: "",
           Tag: "Customer",
           Password: "",
           id: "",
@@ -311,11 +268,11 @@
       valid: true,
       fnameRules: [
         v => !!v || 'First name is required',
-        v => (v && v.length <= 15) || 'Your name is too long',
+        v => (v && v.length <= 100) || 'Your name is too long',
       ],
       snameRules: [
         v => !!v || 'Surname is required',
-        v => (v && v.length <= 15) || 'Your surname is too long',
+        v => (v && v.length <= 100) || 'Your surname is too long',
       ],
       emailRules: [
         v => !!v || 'E-mail is required',
@@ -328,10 +285,6 @@
       homeRules: [
         v => !!v || 'Address is required',
         v => (v && v.length <= 80) || 'Your address is too long',
-      ],
-      posCodeRules: [
-        v => !!v || 'Postal code is required',
-        v => (v && v.length <= 4) || 'Your postal code is too long',
       ],
       cityRules: [
         v => !!v || 'City is required',
@@ -358,30 +311,18 @@
       },
       register() {
         this.$refs.form.validate()
-        if(this.radioGender == 0){
-          this.clientinfo.Gender = "Female";
-        }
-        else if( this.radioGender == 1){
-          this.clientinfo.Gender = "Male";
-        }
-        else if( this.radioGender == 2){
-          this.clientinfo.Gender = "Custom";
-        }
-        else{
-          this.clientinfo.Gender = null;
-        }
 
         if( this.clientinfo.Birthday === ""){
           alert("Birthday is required");
         }
         else{
           console.log("gg");
-          if( this.clientinfo.Last_Name != "" && this.clientinfo.Last_Name != "" && this.clientinfo.Email != "" && this.clientinfo.Mobile_Number.length == 11
-            && this.clientinfo.Home_Adress != "" && this.clientinfo.Postal_code != "" && this.clientinfo.City_Adress != "" && this.clientinfo.Province_Adress != ""
-            && this.clientinfo.Birthday != "" && this.clientinfo.Gender != "" && this.clientinfo.Password.length >= 8
+          if( this.clientinfo.First_Name != "" && this.clientinfo.Last_Name != "" && this.clientinfo.Email != "" && this.clientinfo.Mobile_Number.length == 11
+            && this.clientinfo.Home_Adress != "" && this.clientinfo.City_Adress != "" && this.clientinfo.Province_Adress != ""
+            && this.clientinfo.Birthday != "" && this.clientinfo.Password.length >= 8
           ){
-            if( this.clientinfo.Last_Name.length <= 15 && this.clientinfo.Last_Name.length <= 15 && this.clientinfo.Home_Adress.length <= 80
-              && this.clientinfo.Postal_code.length <= 4 && this.clientinfo.City_Adress.length <= 20 && this.clientinfo.Province_Adress.length <= 20
+            if( this.clientinfo.First_Name.length <= 15 && this.clientinfo.Last_Name.length <= 15 && this.clientinfo.Home_Adress.length <= 80
+              && this.clientinfo.City_Adress.length <= 20 && this.clientinfo.Province_Adress.length <= 20
               && this.clientinfo.Password.length <= 64
             ){
               if( this.clientinfo.Password == this.confirmPass){

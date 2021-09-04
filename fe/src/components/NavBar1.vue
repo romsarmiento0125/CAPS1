@@ -83,7 +83,7 @@
                   height="auto"
                   dark
                   text
-                  to="/Login"
+                  to="/cart"
                 >
                   <v-icon
                     large

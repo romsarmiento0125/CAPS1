@@ -104,7 +104,7 @@
                   height="auto"
                   dark
                   text
-                  @click="userCart"
+                  to="/cart"
                 >
                   <v-icon
                     large
@@ -144,9 +144,6 @@
         this.selectedItem = val;
         console.log(this.selectedItem);
       },
-      userCart() {
-        console.log('User Shopping Cart')
-      }
     },
     
   }

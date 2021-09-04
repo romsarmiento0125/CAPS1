@@ -51,7 +51,7 @@
                     text
                     x-large
                     class="pr-0"
-                    @click="addToCart"
+                    to="/cart"
                   >
                     <v-icon
                       size="60"
@@ -97,15 +97,15 @@
         .then(res => this.items = res.data)
         .catch(err => console.error(err));
       },
-      addToCart() {
-        console.log("add to cart");
-        if(this.customerInfos.Tag == "Customer"){
-          console.log("login");
-        }
-        else{
-          this.$router.push('/Login');
-        }
-      }
+      // addToCart() {
+      //   console.log("add to cart");
+      //   if(this.customerInfos.Tag == "Customer"){
+      //     console.log("login");
+      //   }
+      //   else{
+      //     this.$router.push('/Login');
+      //   }
+      // },
     },
 
     beforeMount(){

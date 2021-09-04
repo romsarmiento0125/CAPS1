@@ -42,11 +42,9 @@ class clientcontroller extends Controller
         $register->Mobile_Number = $request->register['Mobile_Number'];
         $register->Email = $request->register['Email'];
         $register->Home_Adress = $request->register['Home_Adress'];
-        $register->Postal_code = $request->register['Postal_code'];
         $register->City_Adress = $request->register['City_Adress'];
         $register->Province_Adress = $request->register['Province_Adress'];
         $register->Birthday = $request->register['Birthday'];
-        $register->Gender = $request->register['Gender'];
         $register->Tag = $request->register['Tag'];
         $register->Password = $request->register['Password'];
         $register->save();

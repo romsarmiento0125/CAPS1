@@ -123,7 +123,7 @@
     
     data: () => ({
       clientLogin:{
-        Email: 'rom@gmail.com',
+        Email: 'rompaulo@gmail.com',
         Password: 'admin123',
       },
     }),
