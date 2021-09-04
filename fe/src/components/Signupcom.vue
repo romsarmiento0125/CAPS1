@@ -430,6 +430,7 @@
         this.clients = data;
         console.log(this.clients);
         alert("Account created successfully");
+        window.location.href = "http://localhost:8080/Login";
       }
     },
 

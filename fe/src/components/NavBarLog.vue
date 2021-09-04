@@ -48,23 +48,44 @@
                 <span>Help</span>
               </v-btn>
 
-              <v-btn
-                dark
-                text
-                :to="{ name: 'LoginSignup', params: { nt: 'Sign Up'}}"
+              <v-menu
+                offset-y
+                transition="slide-y-transition"
+                bottom
               >
-                Sign Up
-              </v-btn>
+                <template v-slot:activator="{ on, attrs }">
+                  <v-btn
+                    dark
+                    text
+                    v-bind="attrs"
+                    v-on="on"
+                    class=""
+                  >
+                    <v-icon>mdi-account</v-icon>
+                    <h4>{{customerInfos.First_Name}} {{customerInfos.Last_Name}}</h4>
+                  </v-btn>
+                </template>
 
-              <v-btn
-                dark
-                text
-                class="rounded-0"
-                style="border-left: 2px solid rgba(255, 255, 255, 0.5);"
-                :to="{ name: 'LoginSignup', params: { nt: 'Login'}}"
-              >
-                Login
-              </v-btn>
+                <v-list dense>
+                  <v-list-item-group
+                    v-model="selectedItem"
+                    color="primary"
+                    
+                  >
+                    <v-list-item
+                      v-for="item in items"
+                      :key="item.count"
+                    >
+                      <v-list-item-icon>
+                        <v-icon v-text="item.icon"></v-icon>
+                      </v-list-item-icon>
+                      <v-list-item-content>
+                        <v-list-item-title v-text="item.text" @click="accountButton(item.count)"></v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                  </v-list-item-group>
+                </v-list>
+              </v-menu>
             </v-row>
             
             <v-row class="mr-4 mt-3">
@@ -83,7 +104,7 @@
                   height="auto"
                   dark
                   text
-                  to="/Login"
+                  @click="userCart"
                 >
                   <v-icon
                     large
@@ -104,9 +125,30 @@
 <script>
   export default {
     data: () => ({
-
+      selectedItem: 0,
+      items: [
+        { count: 1, text: 'My Account', icon: 'mdi-account' },
+        { count: 2, text: 'My Purchase', icon: 'mdi-cart' },
+        { count: 3, text: 'Logout', icon: 'mdi-logout' },
+      ],
     }),
 
+    computed: {
+      customerInfos() {
+        return this.$store.state.customerInfos;
+      }
+    },
+
+    methods: {
+      accountButton(val) {
+        this.selectedItem = val;
+        console.log(this.selectedItem);
+      },
+      userCart() {
+        console.log('User Shopping Cart')
+      }
+    },
+    
   }
 </script>
 
@@ -115,36 +157,3 @@
     font-size: 90%;
   }
 </style>
-
-
-
-
-<!-- <v-tabs
-            right
-            background-color="transparent"
-            color="white"
-            optional
-            hide-slider
-            >
-              <v-tab
-              class="white--text"
-              >
-                <v-icon>mdi-bell-outline</v-icon>
-                <span>Notifications</span>
-              </v-tab>
-              <v-tab
-              class="white--text"
-              >
-                Another Selection
-              </v-tab>
-              <v-tab
-              class="white--text"
-              >
-                Items
-              </v-tab>
-              <v-tab
-              class="white--text"
-              >
-                Another Screen
-              </v-tab>
-            </v-tabs> -->

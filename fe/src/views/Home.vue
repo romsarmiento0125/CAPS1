@@ -1,7 +1,9 @@
 <template>
   <div>
     <div>
-      <home-navbar1 class="d-none d-sm-flex"></home-navbar1>
+      <home-navbar1 class="d-none d-sm-flex" v-if="navCondition"></home-navbar1>
+      <home-navbarlog class="d-none d-sm-flex" v-else></home-navbarlog>
+
       <home-navbar2 class="d-flex d-sm-none"></home-navbar2>
 
       <div
@@ -80,6 +82,7 @@
   import NavBar2 from '../components/NavBar2.vue'
   import HomeBody from '../components/HomeBody.vue'
   import Footer2 from '../components/Footer2.vue'
+  import NavBarLog from '../components/NavBarLog.vue'
   
   export default{
     name: 'Home',
@@ -89,31 +92,50 @@
       'home-navbar2': NavBar2,
       'home-body': HomeBody,
       'home-footer2': Footer2,
+      'home-navbarlog': NavBarLog,
     },
 
     data: () => ({
       model: 0,
-        items: [
-            {
-              src: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg',
-            },
-            {
-              src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg',
-            },
-            {
-              src: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg',
-            },
-            {
-              src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg',
-            },
-        ],
+      items: [
+        {
+          src: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg',
+        },
+        {
+          src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg',
+        },
+        {
+          src: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg',
+        },
+        {
+          src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg',
+        },
+      ],
       products: [
         { pname: "Bakery.jpg", ptitle: "NAME" },
         { pname: "Beverage.jpg", ptitle: "NAME" },
         { pname: "Dairy.jpg", ptitle: "NAME" },
         { pname: "Egg.jpg", ptitle: "NAME" },
-      ]
+      ],
+      navCondition: true, 
     }),
+
+    methods: {
+      navbarPicker() {
+        if(this.customerInfos.Tag == "Customer"){
+          this.navCondition = false;
+        }
+      }
+    },
+    beforeMount(){
+        this.navbarPicker();
+    },
+
+    computed: {
+      customerInfos() {
+        return this.$store.state.customerInfos;
+      }
+    },
     
   }
 </script>

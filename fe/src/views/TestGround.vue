@@ -221,6 +221,83 @@
       </v-container>
     </div>
 
+    <!-- <div>
+      <v-container
+        class="my-10"
+      >
+        <v-form
+          ref="form"
+        >
+          <v-text-field
+            label="Name"
+          ></v-text-field>
+
+          <v-text-field
+            label="Description"
+          ></v-text-field>
+
+          <v-btn
+            color="success"
+            class="mr-4"
+            @click="addAge"
+          >
+            Next year age
+          </v-btn>
+
+          <v-btn
+            color="error"
+            class="mr-4"
+          >
+            Delete
+          </v-btn>
+
+          <v-btn
+            color="warning"
+            class="mr-4"
+          >
+            Update
+          </v-btn>
+
+          <v-btn
+            color="primary"
+            class="mr-4"
+            @click="getData"
+          >
+            Get
+          </v-btn>
+
+          <v-btn
+            color="primary"
+          >
+            Validate and Add
+          </v-btn>
+
+          <v-text-field
+            label="Id"
+          ></v-text-field>
+
+        </v-form>
+
+        
+        <v-list>
+          <v-list-item
+            v-for="customerInfo in customerInfos"
+            :key="customerInfo.id"
+          >
+            <v-list-item-content>
+              <div
+                class="d-flex"
+              >
+                <p>{{ customerInfo.name }}</p>
+                <p>--</p>
+                <p>{{ customerInfo.desc }}</p>
+              </div>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
+      </v-container>
+    </div> -->
+
     <home-footer2></home-footer2>
   </div>
 </template>
@@ -362,7 +439,24 @@
         axios.delete('http://127.0.0.1:8000/api/clients/' + this.clientinfo.id)
         .then(res => console.log(res.data))
         .catch(err => console.error(err));
-      }
+      },
+
+      // addAge() {
+      //   //this.$store.commit('addAge');
+      //   console.log('not working')
+      // },
+      // getData() {
+      //   this.$store.dispatch('getData');
+      // }
     },
+
+    // computed: {
+    //   customerInfos() {
+    //     return this.$store.state.customerInfos;
+    //   },
+    //   halfAge() {
+    //     return this.$store.getters.halfAge;
+    //   },
+    // },
   }
 </script>
