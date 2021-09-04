@@ -36,6 +36,8 @@ const routes = [
     component:SterGround,
   
   },
+  
+
   {
     path: '/:nt',
     name: 'LoginSignup',
