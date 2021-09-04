@@ -107,6 +107,13 @@
             >
               Test Ground 1
             </v-btn>
+            <v-btn
+              plain
+              dark
+              to="/ster"
+            >
+              SterGround
+            </v-btn>
           </div>
         </v-col>
 
