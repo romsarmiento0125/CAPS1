@@ -28,7 +28,8 @@
 
       <!-- This where body is....!-->
       <!-- <Dash-Home></Dash-Home> -->
-      <Dash-Inv></Dash-Inv>   
+      <!-- <Dash-Inv></Dash-Inv>    -->
+      <Dash-Sale></Dash-Sale>
       <v-card
       tile     
       >
@@ -82,8 +83,8 @@
 <script>
 
 // import DashBoardHome from '../components/DashBoardHome.vue'
-import DashBoardInv from '../components/DashBoardInv.vue'
-
+// import DashBoardInv from '../components/DashBoardInv.vue'
+import DashBoardSale from '../components/DashBoardSale.vue'
 
 export default {
      name: 'Admin',
@@ -106,7 +107,8 @@ export default {
     },
     components: {
       // 'Dash-Home': DashBoardHome,
-      'Dash-Inv': DashBoardInv,
+      // 'Dash-Inv': DashBoardInv,
+      'Dash-Sale' : DashBoardSale,
     }
 }
 </script>
