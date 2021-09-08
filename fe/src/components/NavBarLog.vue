@@ -111,6 +111,11 @@
                   >
                     mdi-cart-outline
                   </v-icon>
+                  <span
+                    class="purple--text text--darken-5"
+                  >
+                    {{customerSaveItems.length}}
+                  </span>
                 </v-btn>
               </v-container>
             </v-row>
@@ -136,7 +141,10 @@
     computed: {
       customerInfos() {
         return this.$store.state.customerInfos;
-      }
+      },
+      customerSaveItems() {
+        return this.$store.state.customerSaveItems;
+      },
     },
 
     methods: {

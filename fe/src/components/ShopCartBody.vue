@@ -20,13 +20,13 @@
             </div>
           </v-col>
           <v-col
-            cols="3"
-            class="d-flex align-center"
+            cols="2"
+            class="d-flex align-center justify-end"
           >
             <v-btn
               color="primary"
             >
-              Change Adress
+              Change Address
             </v-btn>
           </v-col>
         </v-row>
@@ -72,8 +72,8 @@
             color="primary"
           >
             <v-list-item
-              v-for="item in items"
-              :key="item.name"
+              v-for="item in customerSaveItems"
+              :key="item.id"
             >
               <v-list-item-content
                 class="border ma-2 rounded-lg"
@@ -88,15 +88,18 @@
                       class="d-flex align-center"
                     >
                       <v-checkbox
-
+                        :value="true"
+                        v-model="customerSelectedItems[item.id]"
+                        :disabled="((item.productCount + itemQuantity[item.id]) <= 0)"
+                        @click="itemCheckout(item.id, item.productName, item.productDescription ,item.productPrice, item.productCount, item.productImage)"
                       ></v-checkbox>
                       <v-img
                         height="120px"
                         width="120px"
                         contain
-                        :src="require('../assets/items/'+item.item_image)"
+                        :src="require('../assets/items/'+item.productImage)"
                       ></v-img>
-                      <v-list-item-title>{{item.item_name}} <br> {{item.item_name}}</v-list-item-title>
+                      <v-list-item-title>{{item.productName}} <br> {{item.productDescription}} {{item.productSize}}</v-list-item-title>
                     </div>
                   </v-col>
                   <v-col
@@ -112,7 +115,7 @@
                         <v-icon>
                           mdi-currency-php
                         </v-icon>
-                        <span>{{item.item_price}}</span>
+                        <span>{{item.productPrice}}</span>
                       </div>
 
                       <div
@@ -122,6 +125,8 @@
                           depressed
                           color="transparent"
                           class=""
+                          :disabled="((item.productCount + itemQuantity[item.id]) <= 0)"
+                          @click="minusQuantity(item.id)"
                         >
                           <v-icon
                             x-large
@@ -130,11 +135,12 @@
                           </v-icon>
                         </v-btn>
                         <p
-                          class=" my-0"
-                        >0</p>
+                          class=" my-0 px-2"
+                        >{{(item.productCount + itemQuantity[item.id])}}</p>
                         <v-btn
                           depressed
                           color="transparent"
+                          @click="addQuantity(item.id)"
                         >
                           <v-icon
                             x-large
@@ -150,13 +156,15 @@
                         <v-icon>
                           mdi-currency-php
                         </v-icon>
-                        <span>{{item.item_price}}</span>
+                        <span
+                        >{{(item.productPrice * (item.productCount + itemQuantity[item.id]))}}</span>
                       </div>
 
                       <v-btn
                         class="act justify-center"
                         color="primary"
                         plain
+                        disabled
                       >
                         Delete
                       </v-btn>
@@ -186,14 +194,17 @@
               class="d-flex align-center"
             >
               <v-checkbox
-
+                :value="true"
+                v-model="selectAllCheckBox"
+                @click="checkAllCheckBox"
+                disabled
               ></v-checkbox>
               <p class="my-0">Select All</p>
             </div>
           </v-col>
           <v-col
             cols="5"
-            class="d-flex align-center"
+            class="d-flex align-center justify-end"
           >
             <div
               class="d-flex align-center"
@@ -202,7 +213,7 @@
                 class="d-flex"
               >
                 <p class="my-0">Total</p>
-                <p class="my-0">(0 Item):</p>
+                <p class="my-0">({{totalItem}}):</p>
               </div>
               
               <div
@@ -215,11 +226,12 @@
                 </v-icon>
                 <h3
                   class="totalprice"
-                >99999</h3>
+                >{{totalPrice}}</h3>
               </div>
               <v-btn
                 class="act justify-center"
                 color="primary"
+                @click="checkOutItems"
               >
                 Check Out
               </v-btn>
@@ -228,7 +240,7 @@
         </v-row>
       </v-card>
     </v-container>
-    
+    <h1>{{customerSelectedItems}}</h1>
   </div>
 </template>
 
@@ -237,17 +249,128 @@
     name: "shopcart",
 
     data: () => ({
-      items: [
-        {item_name: "Koko Crunch", item_price: 156.50, item_image: 'kokokrunch.jpg'},
-        {item_name: "Pancake Plus", item_price: 79.95, item_image: 'pancake.jpg'},
-        {item_name: "Gardenia", item_price: 67.50, item_image: 'gardenia.png'},
-      ],
+      // items: [
+      //   {id: 0, item_name: "Koko Crunch", item_price: 156.50, item_image: 'kokokrunch.jpg'},
+      //   {id: 1, item_name: "Pancake Plus", item_price: 79.95, item_image: 'pancake.jpg'},
+      //   {id: 2, item_name: "Gardenia", item_price: 67.50, item_image: 'gardenia.png'},
+      // ],
+      counterQuantity: 1,
+      customerSelectedItems: [],
+      selectAllCheckBox: false,
+      itemQuantity: [],
+      itemTotalPrice: 0,
+      temporaryStorage: {},
+      itemId: [],
+      itemName: [],
+      itemDesc: [],
+      itemPrice: [],
+      itemCount: [],
+      itemImage: [],
+      totalPrice: 0,
+      totalItem: 0,
     }),
+
+    methods: {
+      // getItems() {
+      //   console.log("get items");
+      //    axios.get('http://127.0.0.1:8000/api/products')
+      //   .then(res => this.items = res.data)
+      //   .catch(err => console.error(err));
+      // },
+      // itemCounter(count) {
+      //   console.log(count);
+      // },
+      addQuantity(n) {
+        console.log(n);
+        this.itemQuantity.splice(n, 1, (this.itemQuantity[n] + 1))
+      },
+      minusQuantity(n) {
+        console.log(n);
+        this.itemQuantity.splice(n, 1, (this.itemQuantity[n] - 1))
+        console.log(this.itemQuantity[n]);
+        // if(this.itemQuantity[n] == (x * -1)){
+        //   console.log('Stop');
+        //   this.minusBtnCond = true;
+        //   //this.itemQuantity.splice(n, 1, 0);
+        // }
+      },
+      // deleteItem(itemId) {
+      //   console.log("Delete item");
+      //   console.log(itemId);
+      //   this.$store.commit('deleteItem', itemId);
+      // }
+      itemCheckout(id, name, desc, price, count, image) {
+        console.log("item checkout " + id + name + price + count);
+        console.log(this.customerSelectedItems[id]);
+        console.log(this.itemQuantity[id]);
+        if(this.customerSelectedItems[id]) {
+          console.log("add item");
+          this.itemId.push(id);
+          this.itemName.push(name);
+          this.itemDesc.push(desc);
+          this.itemPrice.push(price);
+          this.itemImage.push(image);
+          this.itemCount.push(count + this.itemQuantity[id]);
+        }
+        else{
+          //remove item not function well
+          //logical error
+          console.log("remove item");
+          alert("Uncheck item not functioning well");
+          this.itemId.splice(id, 1);
+          this.itemName.splice(id, 1);
+          this.itemDesc.splice(id, 1);
+          this.itemPrice.splice(id, 1);
+          this.itemImage.splice(id, 1);
+          this.itemCount.splice(id, 1);
+          this.totalPrice = 0;
+          this.totalItem = 0;
+        }
+        console.log(this.itemId + " " + this.itemName + " " + this.itemPrice + " " + this.itemCount);
+        console.log("-----------------");
+        for(var k = 0; k < this.itemPrice.length; k++){
+          this.totalPrice = this.totalPrice + (this.itemPrice[k] * this.itemCount[k]);
+          this.totalItem = this.totalItem + this.itemCount[k];
+        }
+      },
+      checkAllCheckBox() {
+        console.log("Check all");
+        if(this.selectAllCheckBox){
+          console.log("Check all items");
+          for(var i = 0; i < this.$store.state.itemCounter; i++){
+            this.customerSelectedItems[i] = true;
+          }
+
+        }
+        else{
+          console.log("Uncheck all items");
+          for(var i = 0; i < this.$store.state.itemCounter; i++){
+            this.customerSelectedItems[i] = false;
+          }
+        }
+      },
+      checkOutItems() {
+        console.log("Checkout button");
+        this.$emit('emitEventCB', false, this.itemId, this.itemName, this.itemDesc ,this.itemPrice, this.itemCount, this.itemImage);
+      }
+    },
+    
+    beforeMount(){
+      for(var i = 0; i < 100; i++){
+        this.itemQuantity[i] = 0;
+      }
+    },
 
     computed: {
       customerInfos() {
         return this.$store.state.customerInfos;
-      }
+      },
+      customerSaveItems() {
+        return this.$store.state.customerSaveItems;
+      },
+      itemCounter() {
+        return this.$store.state.itemCounter;
+      },
     },
   }
 </script>

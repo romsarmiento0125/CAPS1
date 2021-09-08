@@ -90,6 +90,11 @@
                   >
                     mdi-cart-outline
                   </v-icon>
+                  <span
+                    class="purple--text text--darken-5"
+                  >
+                    {{itemCounter}}
+                  </span>
                 </v-btn>
               </v-container>
             </v-row>
@@ -106,6 +111,12 @@
     data: () => ({
 
     }),
+
+    computed: {
+      itemCounter() {
+        return this.$store.state.itemCounter;
+      },
+    },
 
   }
 </script>

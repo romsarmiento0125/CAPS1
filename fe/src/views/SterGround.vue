@@ -1,5 +1,5 @@
 <template>
-    <div>
+  <div>
     <nav>
       <v-app-bar
       color="lightblue darken-1"
@@ -124,7 +124,7 @@
 
 
     <ster-sg></ster-sg>
-    </div>
+  </div>
 </template>
 
 <script>

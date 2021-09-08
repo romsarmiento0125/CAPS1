@@ -7,12 +7,41 @@ export default new Vuex.Store({
   state: {
     customerInfos: {},
     customerSaveItems: {},
+    productItems: {},
+    itemCounter: 0,
   },
   getters:{
   },
   mutations: {
     storeData: (state, payload) => {
       state.customerInfos = payload
+    },
+    addToCart: (state, payload) => {
+      state.customerSaveItems = payload
+    },
+    storeItems: (state, payload) => {
+      state.productItems = payload
+    },
+    updateCounter: (state, payload) => {
+      state.itemCounter = payload
+    },
+    deleteItem: (state, payload) => {
+      var i = state.itemCounter
+      console.log("This is ic " + i)
+      if(i > 0) {
+        console.log("This is if")
+        while(i > 0){
+          console.log("This is While")
+          var cur = state.customerSaveItems[i]
+          console.log(cur)
+          if(cur.id == payload){
+            console.log("If inside while")
+            state.customerSaveItems.splice(i, 1)
+          }
+          i--
+        }
+        
+      }
     }
   },
   actions: {
@@ -23,7 +52,13 @@ export default new Vuex.Store({
       .then(res => {
         context.commit('storeData', res.data)
       })
-    }
+    },
+    getItems: (context) => {
+      axios.get('http://127.0.0.1:8000/api/products')
+        .then(res => {
+          context.commit('storeItems', res.data)
+        })
+    },
   },
   modules: {
   }
