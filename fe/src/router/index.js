@@ -5,7 +5,7 @@ import About from '../views/About.vue'
 import TestGround from '../views/TestGround.vue'
 import TestGround1 from '../views/TestGround1.vue'
 import LoginSignup from '../views/LoginSignup.vue'
-import SterGround from '../views/SterGround.vue'
+import AdminDashboard from '../views/AdminDashboard.vue'
 import ShoppingCart from '../views/ShoppingCart'
 
 Vue.use(VueRouter)
@@ -32,9 +32,9 @@ const routes = [
     component:TestGround1
   },
   {
-    path: '/ster',
-    name: 'SterGround',
-    component:SterGround,
+    path: '/admin',
+    name: 'AdminDashboard',
+    component:AdminDashboard,
   
   },
   

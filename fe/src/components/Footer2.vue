@@ -110,9 +110,9 @@
             <v-btn
               plain
               dark
-              to="/ster"
+              to="/admin"
             >
-              SterGround
+              AdminDashboard
             </v-btn>
           </div>
         </v-col>
