@@ -29,7 +29,9 @@
       <!-- This where body is....!-->
       <!-- <Dash-Home></Dash-Home> -->
       <!-- <Dash-Inv></Dash-Inv>    -->
-      <Dash-Sale></Dash-Sale>
+      <!-- <Dash-Sale></Dash-Sale> -->
+      <!-- <Dash-Categ> </Dash-Categ> -->
+      <Dash-Users></Dash-Users>
       <v-card
       tile     
       >
@@ -84,8 +86,9 @@
 
 // import DashBoardHome from '../components/DashBoardHome.vue'
 // import DashBoardInv from '../components/DashBoardInv.vue'
-import DashBoardSale from '../components/DashBoardSale.vue'
-
+// import DashBoardSale from '../components/DashBoardSale.vue'
+// import DashBoardCategory from '../components/DashBoardCategory.vue'
+import DashBoardUsers from '../components/DashBoardUsers.vue'
 export default {
      name: 'Admin',
     data(){
@@ -108,7 +111,9 @@ export default {
     components: {
       // 'Dash-Home': DashBoardHome,
       // 'Dash-Inv': DashBoardInv,
-      'Dash-Sale' : DashBoardSale,
+      // 'Dash-Sale' : DashBoardSale,
+      // 'Dash-Categ': DashBoardCategory,
+      'Dash-Users' : DashBoardUsers,
     }
 }
 </script>
