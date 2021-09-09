@@ -1,5 +1,6 @@
 <template>
   <div class="Sales">
+<!-- button New Sales -->
     <div>
       <v-btn 
         class="mx-5 my-5"
@@ -7,89 +8,106 @@
         dark
         color="light-blue darken-4"
       >
-       <v-icon left>mdi-plus</v-icon>  
-       <span>New Sales</span>
+        <v-icon left>mdi-plus</v-icon>  
+        <span>New Sales</span>
       </v-btn>
     </div>
-    
-    <v-card class="my-5 mx-5 oa-2">
+<!-- closing Button -->
+       <v-card class="my-5 mx-5 pa-2">
       <v-card-title class="text-uppercase grey--text text--darken-3">
         Sales</v-card-title>
-
-      <v-divider class="pa-2"></v-divider>
-
+       <v-divider class="pa-2"></v-divider>
+<!-- container Show and Search -->
       <v-container fluid container>
-        <v-row>
-           <v-col 
-           class="d-flex cols-2"
-           >
-             <h3 class="pa-1 grey--text text--darken-1">Show: </h3>
-              <v-btn
-                height="auto"
+          <v-row>
+<!-- column for show -->
+           <v-col
+           cols="2">
+            <div class="d-flex  align-center">
+              <v-card-subtitle>Show:</v-card-subtitle>
+              <v-btn 
                 depressed
                 dense 
                 outlined 
                 color="grey"
               >
-                  <span class="grey--text text--darken-1">1</span>
+                  <span>1</span>
                   <v-icon right>mdi-chevron-down</v-icon>  
               </v-btn>
-          </v-col>
-
-          <v-col>
-            <v-text-field
-                append-icon="mdi-magnify"
-                hide-details=""
-                outlined
-                dense
-                height="small"
-                background-color="white"
-                placeholder=".."
+            </div>
+           </v-col>
+<!-- closing column show -->
+           <v-spacer></v-spacer>
+<!-- column Search -->
+            <v-col 
+              class=" d-flex 
+              align-center
+              "
+              cols="4"
               >
-              </v-text-field>
-          </v-col>
-        </v-row>
+              
+              <v-text-field
+                  append-icon="mdi-magnify"
+                  hide-details=""
+                  outlined
+                  dense
+                  height="small"
+                  background-color="white"
+                  placeholder=".."
+                  class="pr-3"
+                  
+                >
+                </v-text-field>
+            </v-col>
+<!-- closing column Search -->
+          </v-row>
       </v-container>
+<!-- closing container show and search -->
 
+<!-- container product name and button below -->
       <v-container fluid container>
         <v-row class="grey--text text--darken-1">
-          <v-col cols-2>
-            <v-card-title>
+          <v-col cols="2">
+            <v-card-subtitle>
               #
-            </v-card-title>
+            </v-card-subtitle>
           </v-col>
           
-          <v-col cols-2>
-            <v-card-title>
-              Date
-            </v-card-title>
+          <v-col cols="3">
+            <v-card-subtitle>
+              Product Name
+            </v-card-subtitle>
           </v-col>
 
-          <v-col cols-2>
-            <v-card-title>
-              Reference #
-            </v-card-title>
+          <v-col cols="2">
+            <v-card-subtitle>
+              Stock In
+            </v-card-subtitle>
           </v-col>
 
-          <v-col cols-2>
-            <v-card-title>
-              Customer
-            </v-card-title>
+          <v-col cols="2">
+            <v-card-subtitle>
+              Stock Out
+            </v-card-subtitle>
           </v-col>
           
-          <v-col cols-2>
-            <v-card-title>
-              Action
-            </v-card-title>
+          <v-col cols="3">
+            <v-card-subtitle>
+              Stock Available
+            </v-card-subtitle>
           </v-col>
         </v-row>
-      </v-container>
-
-      <div class="d-flex justify-end align-self">
+<!-- Button Next and Prev -->
+        <div 
+        class="
+        d-flex 
+        justify-end 
+        align-center
+        pr-3
+        ">
           <v-btn
             depressed
             color="white" 
-            fab
             text-center
             >
             <v-icon>
@@ -100,13 +118,14 @@
           <v-btn
             depressed
             color="white"
-            fab
             >
             <v-icon>
               mdi-chevron-right
             </v-icon>
           </v-btn>
         </div>
+<!-- closing Button -->
+      </v-container>
     </v-card>
   </div>
 </template

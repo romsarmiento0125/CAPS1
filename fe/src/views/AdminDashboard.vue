@@ -30,7 +30,11 @@
       <!-- <Dash-Home></Dash-Home> -->
       <!-- <Dash-Inv></Dash-Inv>    -->
       <!-- <Dash-Sale></Dash-Sale> -->
+      <!-- <Dash-Receive></Dash-Receive> -->
       <!-- <Dash-Categ> </Dash-Categ> -->
+      <!-- <Dash-PList></Dash-PList>   -->
+      <!-- <Dash-SList></Dash-SList> -->
+      <!-- <Dash-CList></Dash-CList> -->
       <Dash-Users></Dash-Users>
       <v-card
       tile     
@@ -87,8 +91,13 @@
 // import DashBoardHome from '../components/DashBoardHome.vue'
 // import DashBoardInv from '../components/DashBoardInv.vue'
 // import DashBoardSale from '../components/DashBoardSale.vue'
+// import DashBoardReceive from '../components/DashBoardReceive.vue'
 // import DashBoardCategory from '../components/DashBoardCategory.vue'
+// import DashBoardPList from '../components/DashBoardPList.vue'
+// import DashBoardSList from '../components/DashBoardSList.vue'
+// import DashBoardCList from '../components/DashBoardCList.vue'
 import DashBoardUsers from '../components/DashBoardUsers.vue'
+
 export default {
      name: 'Admin',
     data(){
@@ -112,8 +121,13 @@ export default {
       // 'Dash-Home': DashBoardHome,
       // 'Dash-Inv': DashBoardInv,
       // 'Dash-Sale' : DashBoardSale,
+      // 'Dash-Receive' : DashBoardReceive,
       // 'Dash-Categ': DashBoardCategory,
+      // 'Dash-PList' : DashBoardPList,   
+      // 'Dash-SList' : DashBoardSList,
+      // 'Dash-CList': DashBoardCList,
       'Dash-Users' : DashBoardUsers,
+     
     }
 }
 </script>

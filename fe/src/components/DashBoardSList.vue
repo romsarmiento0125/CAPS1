@@ -1,14 +1,13 @@
 <template>
-  <div class="Category">
-    <!-- <v-container class="d-flex"> -->
+  <div class="SupplierList">
       <v-row no-gutters>
-<!-- column Product Form -->
+<!-- column supplier form -->
         <v-col cols="3 pa-0">
           <v-container fluid>
             <v-row>
               <v-col>
                 <v-card class="pb-3">
-                  <v-card-title class="justify-center"> Customer Form</v-card-title>
+                  <v-card-title class="justify-center"> Supplier Form</v-card-title>
                       <v-spacer></v-spacer>
                       <v-divider></v-divider>
                   <v-form
@@ -16,7 +15,7 @@
                     >
                     <div>
                       <span>
-                        SKU:
+                        Supplier:
                       </span>
 
                       <v-text-field
@@ -29,21 +28,7 @@
 
                     <div>
                       <span>
-                        Category:
-                      </span>
-
-                      <v-autocomplete
-                        outlined
-                        dense
-                        required
-                        cache-items
-                        class="mt-1"
-                      ></v-autocomplete>
-                    </div>
-
-                    <div>
-                      <span>
-                        Product Name:
+                        Contact #:
                       </span>
 
                       <v-text-field
@@ -56,21 +41,7 @@
 
                     <div>
                       <span>
-                        Description:
-                      </span>
-
-                      <v-text-field
-                        outlined
-                        dense
-                        class="mt-1"
-                        required
-                        height="100"
-                      ></v-text-field>
-                    </div>
-
-                    <div>
-                      <span>
-                        Product Price:
+                        Address:
                       </span>
 
                       <v-text-field
@@ -103,9 +74,9 @@
             </v-row> 
           </v-container>
         </v-col>
-<!-- closing column Product Form -->
+<!-- closing column supplier form -->
 
-<!-- column item list -->
+<!-- column items -->
         <v-col cols="9"
           class="pr-2 py-0 "
           >
@@ -128,7 +99,7 @@
             </v-card>
           </v-container>
         </v-col>
-<!-- closing item list -->
+<!-- closing column items -->
       </v-row>
   </div>
 </template>
