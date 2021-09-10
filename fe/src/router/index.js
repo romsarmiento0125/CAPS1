@@ -6,7 +6,8 @@ import TestGround from '../views/TestGround.vue'
 import TestGround1 from '../views/TestGround1.vue'
 import LoginSignup from '../views/LoginSignup.vue'
 import AdminDashboard from '../views/AdminDashboard.vue'
-import ShoppingCart from '../views/ShoppingCart'
+import ShoppingCart from '../views/ShoppingCart.vue'
+import UserAccount from '../views/UserAccount.vue'
 
 Vue.use(VueRouter)
 
@@ -37,12 +38,15 @@ const routes = [
     component:AdminDashboard,
   
   },
-  
-
   {
     path: '/cart',
     name: 'ShoppingCart',
     component: ShoppingCart,
+  },
+  {
+    path: '/user',
+    name: 'UserAccount',
+    component: UserAccount,
   },
   {
     path: '/:nt',

@@ -69,7 +69,6 @@
       <div>
         <v-list>
           <v-list-item-group
-            color="primary"
           >
             <v-list-item
               v-for="item in customerSaveItems"
@@ -240,7 +239,6 @@
         </v-row>
       </v-card>
     </v-container>
-    <h1>{{customerSelectedItems}}</h1>
   </div>
 </template>
 
@@ -303,6 +301,8 @@
         console.log("item checkout " + id + name + price + count);
         console.log(this.customerSelectedItems[id]);
         console.log(this.itemQuantity[id]);
+        this.totalPrice = 0;
+        this.totalItem = 0;
         if(this.customerSelectedItems[id]) {
           console.log("add item");
           this.itemId.push(id);
@@ -328,9 +328,13 @@
         }
         console.log(this.itemId + " " + this.itemName + " " + this.itemPrice + " " + this.itemCount);
         console.log("-----------------");
+        console.log(this.itemPrice);
+        console.log(this.itemCount);
         for(var k = 0; k < this.itemPrice.length; k++){
           this.totalPrice = this.totalPrice + (this.itemPrice[k] * this.itemCount[k]);
+          console.log("Total Price: " + this.totalPrice);
           this.totalItem = this.totalItem + this.itemCount[k];
+          console.log("Total Item: " + this.totalItem);
         }
       },
       checkAllCheckBox() {
@@ -375,7 +379,7 @@
   }
 </script>
 
-<style>
+<style scoped>
   .uqta p{
     margin: 0px 50px;
     font-size: 1.10rem;

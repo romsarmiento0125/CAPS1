@@ -59,7 +59,7 @@
   }
 </script>
 
-<style>
+<style scoped>
   .navtxt {
     font-size: 2.5vw;
     border-left: black solid 1px;

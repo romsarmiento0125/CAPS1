@@ -7,6 +7,7 @@
       <v-container>
         <v-row>
           <v-col
+            class=""
             cols="1"
           >
             <router-link
@@ -22,9 +23,10 @@
               ></v-img>
             </router-link>
           </v-col>
+          
           <v-col
             class="p-0"
-            cols="10"
+            cols="11"
           >
             <div
               class="ali d-flex align-center mb-6"
@@ -32,10 +34,11 @@
               <span
                 class="navtxt pl-2"
               >
-                {{navName}}
+                User
               </span>
             </div>
           </v-col>
+          
         </v-row>
       </v-container>
     </v-app-bar>
@@ -49,9 +52,6 @@
 
 <script>
   export default {
-    name: "navBarCart",
-    props: ["navName"],
-
     data: () => ({
       
     }),
@@ -59,7 +59,8 @@
 </script>
 
 <style scoped>
-  .navtxt {
+
+  .navtxt{
     font-size: 2.5vw;
     border-left: black solid 1px;
   }
@@ -75,3 +76,4 @@
     background: linear-gradient(to right, #1F5CD5, #63ABE8);
   }
 </style>
+

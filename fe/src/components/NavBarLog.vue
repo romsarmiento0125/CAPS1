@@ -73,14 +73,14 @@
                     
                   >
                     <v-list-item
-                      v-for="item in items"
-                      :key="item.count"
+                      v-for="(item, n) in items"
+                      :key="n"
                     >
                       <v-list-item-icon>
                         <v-icon v-text="item.icon"></v-icon>
                       </v-list-item-icon>
                       <v-list-item-content>
-                        <v-list-item-title v-text="item.text" @click="accountButton(item.count)"></v-list-item-title>
+                        <v-list-item-title v-text="item.text" @click="accountButton(item.to)"></v-list-item-title>
                       </v-list-item-content>
                     </v-list-item>
                   </v-list-item-group>
@@ -112,9 +112,9 @@
                     mdi-cart-outline
                   </v-icon>
                   <span
-                    class="purple--text text--darken-5"
+                    class="white--text"
                   >
-                    {{customerSaveItems.length}}
+                    {{itemCounter}}
                   </span>
                 </v-btn>
               </v-container>
@@ -132,9 +132,8 @@
     data: () => ({
       selectedItem: 0,
       items: [
-        { count: 1, text: 'My Account', icon: 'mdi-account' },
-        { count: 2, text: 'My Purchase', icon: 'mdi-cart' },
-        { count: 3, text: 'Logout', icon: 'mdi-logout' },
+        { title: "Account", text: 'My Account', icon: 'mdi-account', to: "account"  },
+        { title: "Purchase", text: 'My Purchase', icon: 'mdi-cart', to: "account"  },
       ],
     }),
 
@@ -142,22 +141,44 @@
       customerInfos() {
         return this.$store.state.customerInfos;
       },
-      customerSaveItems() {
-        return this.$store.state.customerSaveItems;
+      itemCounter() {
+        return this.$store.state.itemCounter;
+      },
+    },
+    
+    methods: {
+      accountButton(cond) {
+        if(cond == "account"){
+          this.$router.push({path: '/user'});
+        }
+        else if(cond == "admin"){
+          console.log("Admin");
+          alert("Admin");
+        }
+        else if(cond == "logout"){
+          console.log("Logout");
+          window.location.href = "http://localhost:8080/";
+        }
       },
     },
 
-    methods: {
-      accountButton(val) {
-        this.selectedItem = val;
-        console.log(this.selectedItem);
-      },
+    beforeMount(){
+      var ob1 = { title: "Admin", text: 'Admin', icon: 'mdi-cog-outline', to: "admin" };
+      var ob2 = { title: "Logout", text: 'Logout', icon: 'mdi-logout', to: "logout"  };
+      if(this.customerInfos.Tag == "Admin"){
+        this.items.push(ob1);
+        this.items.push(ob2);
+      }
+      else{
+        this.items.push(ob2);
+      }
     },
+
     
   }
 </script>
 
-<style>
+<style scoped>
   .nav span{
     font-size: 90%;
   }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\clientcontroller;
+use App\Http\Controllers\itemAddController;
 use App\Http\Controllers\login;
 use App\Http\Controllers\productcontroller;
 use Illuminate\Http\Request;
@@ -47,4 +48,11 @@ Route::prefix('/products')->group( function () {
     Route::post('/store', [productcontroller::class, 'store']);
     Route::put('/{id}', [productcontroller::class, 'update']);
     Route::delete('/{id}', [productcontroller::class, 'destroy']);
+});
+
+Route::get('/additems', [itemAddController::class, 'index']);
+Route::prefix('/additems')->group( function () {
+    Route::post('/store', [itemAddController::class, 'store']);
+    Route::put('/{id}', [itemAddController::class, 'update']);
+    Route::delete('/{id}', [itemAddController::class, 'destroy']);
 });

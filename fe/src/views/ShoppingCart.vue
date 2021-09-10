@@ -2,10 +2,21 @@
   <div
     class="bod"
   >
-    <shopcart-navbarcart></shopcart-navbarcart>
+    <shopcart-navbarcart :navName="navBarName"></shopcart-navbarcart>
     
-    <shopcart-shopcartbody @emitEventCB="shopCartBodyData" v-if="bodyPicker"></shopcart-shopcartbody>
-    <shopcart-checkout v-else></shopcart-checkout>
+    <shopcart-shopcartbody
+      @emitEventCB="shopCartBodyData"
+      v-if="bodyPicker"
+      ></shopcart-shopcartbody>
+    <shopcart-checkout 
+      :itemId="propId"
+      :itemName="propName"
+      :itemDesc="propDesc"
+      :itemPrice="propPrice"
+      :itemCount="propCount"
+      :itemImage="propImage"
+      v-else
+    ></shopcart-checkout>
 
     <shopcart-footercart></shopcart-footercart>
   </div>
@@ -28,19 +39,36 @@
     },
 
     data: () => ({
-      bodyPicker: false,
+      bodyPicker: true,
+      navBarName: "Shopping Cart",
+      propId: [],
+      propName: [],
+      propDesc: [],
+      propPrice: [],
+      propCount: [],
+      propImage: [],
     }),
 
     methods: {
       shopCartBodyData(cond, id, name, desc, price, count, image) {
-        console.log(cond);
-        console.log(id);
-        console.log(name);
-        console.log(desc);
-        console.log(price);
-        console.log(count);
-        console.log(image);
+        this.changeNavBarName();
+        this.propId = id;
+        this.propName = name;
+        this.propDesc = desc;
+        this.propPrice = price;
+        this.propCount = count;
+        this.propImage = image;
         this.bodyPicker = cond;
+
+        console.log("This is id" + this.propId);
+        console.log("This is name" + this.propName);
+        console.log("This is desc" + this.propDesc);
+        console.log("This is price" + this.propPrice);
+        console.log("This is count" + this.propCount);
+        console.log("This is image" + this.propImage);
+      },
+      changeNavBarName() {
+        this.navBarName = "Check Out"
       }
     }
 
@@ -49,6 +77,6 @@
 
 <style>
   .bod {
-    background-color: #ECEFF1;
+    background-color: #E0E0E0;
   }
 </style>

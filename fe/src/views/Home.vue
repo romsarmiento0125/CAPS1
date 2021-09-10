@@ -122,7 +122,7 @@
 
     methods: {
       navbarPicker() {
-        if(this.customerInfos.Tag == "Customer"){
+        if(this.customerInfos.Tag == "Customer" || this.customerInfos.Tag == "Admin"){
           this.navCondition = false;
         }
       }

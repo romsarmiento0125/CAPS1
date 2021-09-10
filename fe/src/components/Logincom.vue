@@ -154,6 +154,7 @@
           alert(this.customerInfos);
         }
         else{
+          console.log(this.customerInfos);
           this.$router.push('/');
         }
       }

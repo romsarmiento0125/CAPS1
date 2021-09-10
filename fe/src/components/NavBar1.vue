@@ -91,7 +91,7 @@
                     mdi-cart-outline
                   </v-icon>
                   <span
-                    class="purple--text text--darken-5"
+                    class="white--text"
                   >
                     {{itemCounter}}
                   </span>
@@ -121,7 +121,7 @@
   }
 </script>
 
-<style>
+<style scoped>
   .nav span{
     font-size: 90%;
   }

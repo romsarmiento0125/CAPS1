@@ -27,11 +27,11 @@
       </v-app-bar>
 
       <!-- This where body is....!-->
-      <!-- <Dash-Home></Dash-Home> -->
-      <!-- <Dash-Inv></Dash-Inv>    -->
-      <!-- <Dash-Sale></Dash-Sale> -->
-      <!-- <Dash-Categ> </Dash-Categ> -->
-      <Dash-Users></Dash-Users>
+      <Dash-Home v-if="false"></Dash-Home>
+      <Dash-Inv v-if="false"></Dash-Inv>   
+      <Dash-Sale v-if="false"></Dash-Sale>
+      <Dash-Categ v-if="false"> </Dash-Categ>
+      <Dash-Users v-if="true"></Dash-Users>
       <v-card
       tile     
       >
@@ -84,10 +84,10 @@
 
 <script>
 
-// import DashBoardHome from '../components/DashBoardHome.vue'
-// import DashBoardInv from '../components/DashBoardInv.vue'
-// import DashBoardSale from '../components/DashBoardSale.vue'
-// import DashBoardCategory from '../components/DashBoardCategory.vue'
+import DashBoardHome from '../components/DashBoardHome.vue'
+import DashBoardInv from '../components/DashBoardInv.vue'
+import DashBoardSale from '../components/DashBoardSale.vue'
+import DashBoardCategory from '../components/DashBoardCategory.vue'
 import DashBoardUsers from '../components/DashBoardUsers.vue'
 export default {
      name: 'Admin',
@@ -109,10 +109,10 @@ export default {
       }
     },
     components: {
-      // 'Dash-Home': DashBoardHome,
-      // 'Dash-Inv': DashBoardInv,
-      // 'Dash-Sale' : DashBoardSale,
-      // 'Dash-Categ': DashBoardCategory,
+      'Dash-Home': DashBoardHome,
+      'Dash-Inv': DashBoardInv,
+      'Dash-Sale' : DashBoardSale,
+      'Dash-Categ': DashBoardCategory,
       'Dash-Users' : DashBoardUsers,
     }
 }
