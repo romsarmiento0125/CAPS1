@@ -49,7 +49,7 @@ const routes = [
     component: UserAccount,
   },
   {
-    path: '/:nt',
+    path: '/loginsignup/:nt',
     name: 'LoginSignup',
     component:LoginSignup,
   },

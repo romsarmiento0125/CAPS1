@@ -153,7 +153,7 @@
         }
         else if(cond == "admin"){
           console.log("Admin");
-          alert("Admin");
+          this.$router.push({path: '/admin'});
         }
         else if(cond == "logout"){
           console.log("Logout");

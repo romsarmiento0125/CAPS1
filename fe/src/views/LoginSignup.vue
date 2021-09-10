@@ -2,7 +2,7 @@
   <div class="bod">
     <ls-navbarov></ls-navbarov>
 
-    <ls-logincom v-if="'Login' === navTitle"></ls-logincom>
+    <ls-logincom v-if="'Login' === navTitle" @signup="signupTrue"></ls-logincom>
 
     <ls-signupcom v-else-if="'Sign Up' === navTitle"></ls-signupcom>
 
@@ -27,11 +27,22 @@
     },
 
     data: () => ({
-
+      navTitle: "",
     }),
     
     created() {
-      this.navTitle = this.$route.params.nt;
+      if(this.$route.params.nt == "Login"){
+        this.navTitle = "Login";
+      }
+      else{
+        this.navTitle = "Sign Up";
+      }
+    },
+
+    methods: {
+      signupTrue() {
+        this.navTitle = "Sign Up";
+      }
     }
     
   }

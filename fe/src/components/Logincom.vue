@@ -89,8 +89,23 @@
                 color="blue darken-4"
                 dark
                 class="rounded-xl"
+                width="230px"
+                @click="gotoSignup"
               >
-                LOGIN WITH FACEBOOK
+                SIGN UP / REGISTER
+              </v-btn>
+            </v-card-text>
+
+            <v-card-text
+              class="d-flex justify-center pb-0"
+            >
+              <v-btn
+                color="blue darken-4"
+                dark
+                class="rounded-xl"
+                width="230px"
+              >
+                LOGIN WITH GMAIL
               </v-btn>
             </v-card-text>
           </v-card>
@@ -157,6 +172,9 @@
           console.log(this.customerInfos);
           this.$router.push('/');
         }
+      },
+      gotoSignup() {
+        this.$emit("signup");
       }
     }
 

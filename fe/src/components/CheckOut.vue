@@ -339,7 +339,7 @@
         console.log("Order Finish");
         var temp = {};
         if(email == null){
-          this.$router.push({name: 'LoginSignup', params: { nt: 'Sign Up' }})
+          this.$router.push({name: 'LoginSignup', params: { nt: 'Login' }})
         }
         else{
           for(var i = 0; i < this.itemId.length; i++){
