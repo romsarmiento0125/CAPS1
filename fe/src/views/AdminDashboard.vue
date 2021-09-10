@@ -28,10 +28,14 @@
 
       <!-- This where body is....!-->
       <Dash-Home v-if="drawerCondition == 'Home'"></Dash-Home>
-      <Dash-Inv v-if="drawerCondition == 'Inventory'"></Dash-Inv>   
-      <Dash-Sale v-if="drawerCondition == 'Sales'"></Dash-Sale>
-      <Dash-Categ v-if="drawerCondition == 'Category'"> </Dash-Categ>
-      <Dash-Users v-if="drawerCondition == 'Users'"></Dash-Users>
+      <Dash-Inv v-else-if="drawerCondition == 'Inventory'"></Dash-Inv>   
+      <Dash-Sale v-else-if="drawerCondition == 'Sales'"></Dash-Sale>
+      <Dash-Receive v-else-if="drawerCondition == 'Receiving'"></Dash-Receive>
+      <Dash-Categ v-else-if="drawerCondition == 'Category'"> </Dash-Categ>
+      <Dash-PList v-else-if="drawerCondition == 'Product List'"></Dash-PList>  
+      <Dash-SList v-else-if="drawerCondition == 'Supplier List'"></Dash-SList>
+      <Dash-CList v-else-if="drawerCondition == 'Customer List'"></Dash-CList>
+      <Dash-Users v-else-if="drawerCondition == 'Users'"></Dash-Users>
       <v-card
       tile     
       >
@@ -97,7 +101,11 @@
 import DashBoardHome from '../components/DashBoardHome.vue'
 import DashBoardInv from '../components/DashBoardInv.vue'
 import DashBoardSale from '../components/DashBoardSale.vue'
+import DashBoardReceive from '../components/DashBoardReceive.vue'
 import DashBoardCategory from '../components/DashBoardCategory.vue'
+import DashBoardPList from '../components/DashBoardPList.vue'
+import DashBoardSList from '../components/DashBoardSList.vue'
+import DashBoardCList from '../components/DashBoardCList.vue'
 import DashBoardUsers from '../components/DashBoardUsers.vue'
 
 export default {
@@ -131,9 +139,12 @@ export default {
     'Dash-Home': DashBoardHome,
     'Dash-Inv': DashBoardInv,
     'Dash-Sale' : DashBoardSale,
+    'Dash-Receive' : DashBoardReceive,
     'Dash-Categ': DashBoardCategory,
+    'Dash-PList' : DashBoardPList,   
+    'Dash-SList' : DashBoardSList,
+    'Dash-CList': DashBoardCList,
     'Dash-Users' : DashBoardUsers,
-    
   }
 }
 </script>
