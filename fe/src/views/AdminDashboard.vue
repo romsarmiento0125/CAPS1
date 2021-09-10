@@ -89,6 +89,7 @@ import DashBoardInv from '../components/DashBoardInv.vue'
 import DashBoardSale from '../components/DashBoardSale.vue'
 import DashBoardCategory from '../components/DashBoardCategory.vue'
 import DashBoardUsers from '../components/DashBoardUsers.vue'
+
 export default {
      name: 'Admin',
     data(){
@@ -114,6 +115,7 @@ export default {
       'Dash-Sale' : DashBoardSale,
       'Dash-Categ': DashBoardCategory,
       'Dash-Users' : DashBoardUsers,
+     
     }
 }
 </script>

@@ -1,5 +1,6 @@
 <template>
-  <div class="Sales">
+  <div class="Users">
+<!-- button New users -->
     <div class=" d-flex justify-end">
       <v-btn 
         class="mx-5 my-5"
@@ -11,14 +12,15 @@
        <span>New Users</span>
       </v-btn>
     </div>
-    
+<!-- closing button -->
+
     <v-card class="my-5 mx-5 oa-2">
       <v-card-title class="text-uppercase grey--text text--darken-3">
         Users</v-card-title>
 
       <v-divider class="pa-2"></v-divider>
 
-
+<!-- container items -->
       <v-container fluid container>
         <v-row class="grey--text text--darken-1 ">
           <v-col col-2>
@@ -40,6 +42,7 @@
           </v-col>  
         </v-row>
       </v-container>
+<!-- closing container -->
     </v-card>
   </div>
 </template
