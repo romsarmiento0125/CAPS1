@@ -17,9 +17,11 @@ class CreateCustomerOrdersTable extends Migration
             $table->id();
             $table->string('Customer_Email');
             $table->string('Product_Name');
+            $table->string('Product_Desc');
             $table->string('Product_Price');
             $table->string('Product_Count');
             $table->string('Product_TPrice');
+            $table->string('Product_Image');
             $table->string('OrderTag');
             $table->timestamps();
         });

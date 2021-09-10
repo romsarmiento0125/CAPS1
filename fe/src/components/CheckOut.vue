@@ -346,15 +346,17 @@
             temp[i] = {};
             temp[i].customerEmail = email;
             temp[i].productName = this.itemName[i];
+            temp[i].productDesc = this.itemDesc[i];
             temp[i].productPrice = this.itemPrice[i];
             temp[i].productCount = this.itemCount[i];
             temp[i].productTotalPrice = (this.itemPrice[i] * this.itemCount[i]);
-            temp[i].orderTag = "Unfinish";
+            temp[i].productImage = this.itemImage[i];
+            temp[i].orderTag = "To Pack";
             console.log("Fire axios");
             this.saveOrder(temp[i]);
           }
           alert("Order Complete");
-          this.$router.push('/user');
+          this.$router.push('/');
         }
         //console.log(temp);
       },

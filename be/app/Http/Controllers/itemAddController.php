@@ -14,7 +14,7 @@ class itemAddController extends Controller
      */
     public function index()
     {
-        //
+        return customerOrders::all();
     }
 
     /**
@@ -39,9 +39,11 @@ class itemAddController extends Controller
 
         $register->Customer_Email = $request->register['customerEmail'];
         $register->Product_Name = $request->register['productName'];
+        $register->Product_Desc = $request->register['productDesc'];
         $register->Product_Price = $request->register['productPrice'];
         $register->Product_Count = $request->register['productCount'];
         $register->Product_TPrice = $request->register['productTotalPrice'];
+        $register->Product_Image = $request->register['productImage'];
         $register->OrderTag = $request->register['orderTag'];
         
         $register->save();

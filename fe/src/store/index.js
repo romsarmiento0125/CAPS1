@@ -55,9 +55,9 @@ export default new Vuex.Store({
     },
     getItems: (context) => {
       axios.get('http://127.0.0.1:8000/api/products')
-        .then(res => {
-          context.commit('storeItems', res.data)
-        })
+      .then(res => {
+        context.commit('storeItems', res.data)
+      })
     },
   },
   modules: {
