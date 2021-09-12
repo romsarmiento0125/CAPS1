@@ -7,7 +7,7 @@
       <home-navbar2 class="d-flex d-sm-none"></home-navbar2>
 
       <div
-        class="ma-3 d-none d-sm-flex"
+        class="ma-3 d-none d-sm-flex mt-16 pt-16"
       >
         <v-container>
           <v-row>

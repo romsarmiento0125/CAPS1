@@ -22,15 +22,32 @@
               xl="2"
             >
               <v-card
-                height="100%"
+                class="rounded-tl-xl rounded-br-xl"
+                elevation="5"
+                outlined
+                min-height="343px"
+                min-width="223px"
+                max-height="343px"
+                max-width="223px"
               >
                 <v-img
-                  height="65%"
+                  contain
+                  min-height="200px"
+                  min-width="222px"
+                  max-height="200px"
+                  max-width="222px"
                   :src="require('../assets/items/'+item.Product_Image)"
                 ></v-img>
+          
 
-                <v-card-title class="ma-0 pb-0">{{item.Product_Name}}</v-card-title>
-                <!-- <v-card-subtitle class="ma-0 pb-0">{{item.Product_Description}}</v-card-subtitle> -->
+                <div
+                  class="title mx-3 mt-2"
+                >
+                  <v-card-title class="ma-0 pa-0 font-weight-black">{{item.Product_Name}}</v-card-title>
+                  <v-card-subtitle class="ma-0 pa-0">{{item.Product_Description}}</v-card-subtitle>
+                </div>
+
+                
 
                 <v-card-actions
                   class="ma-0 py-0 pr-0"
@@ -47,16 +64,20 @@
                   <v-spacer></v-spacer>
 
                   <v-btn
-                    color="#1F5CD5"
-                    text
                     x-large
-                    class="pr-0"
+                    depressed
+                    class="rounded-tl-xl rounded-br-xl"
+                    color="#1F5CD5"
+                    height="52px"
+                    min-width="62px"
                     to=""
                     @click="itemToCart(item.Product_Name, item.Product_Price, item.Product_Image, item.Product_Description, item.Product_Size, 1)"
                   >
                     <v-icon
-                      size="60"
-                    >mdi-plus-box</v-icon>
+                      color="white"
+                      size="50"
+                      class="ma-0 pa-0"
+                    >mdi-cart-variant</v-icon>
                   </v-btn>
                 </v-card-actions>
               </v-card>
@@ -224,3 +245,9 @@
 :src="require('../assets/items/'+ item.name)"
 src="../assets/items/Great_taste_100g.png"
 -->
+
+<style scoped>
+  .title{
+    height: 80px;
+  }
+</style>

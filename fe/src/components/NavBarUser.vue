@@ -15,7 +15,7 @@
             >
               <v-img
               contain
-                src="../assets/3.png"
+                src="../assets/logoBL.png"
                 max-height="100px"
                 max-width="100px"
                 height="90%"

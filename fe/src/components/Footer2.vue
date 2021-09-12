@@ -131,7 +131,7 @@
             <router-link to="/">
               <v-img
                 contain
-                src="../assets/3w.png"
+                src="../assets/LogoWh.png"
                 max-height="100px"
                 max-width="100px"
               >
