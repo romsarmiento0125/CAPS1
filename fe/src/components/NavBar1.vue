@@ -43,6 +43,7 @@
               <v-btn
                 dark
                 text
+                to='/help'
               >
                 <v-icon>mdi-help-circle-outline</v-icon>
                 <span>Help</span>
