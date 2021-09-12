@@ -8,13 +8,6 @@ import LoginSignup from '../views/LoginSignup.vue'
 import AdminDashboard from '../views/AdminDashboard.vue'
 import ShoppingCart from '../views/ShoppingCart.vue'
 import UserAccount from '../views/UserAccount.vue'
-import TermsAndCondition from '../components/TermsAndCondition.vue'
-import PrivacyPolicy from '../components/PrivacyPolicy.vue'
-import CookiePolicy from '../components/CookiePolicy.vue'
-import Faqs from '../components/Faqs.vue'
-import ContactUs from '../components/ContactUs.vue'
-import Help from '../components/Help.vue'
-
 Vue.use(VueRouter)
 
 const routes = [
@@ -58,42 +51,7 @@ const routes = [
     path: '/loginsignup/:nt',
     name: 'LoginSignup',
     component:LoginSignup,
-  },
-  // Footer Here!
-  {
-    path: '/terms',
-    name: 'TermsAndCondition',
-    component:TermsAndCondition,
-  },
-  {
-    path: '/policy',
-    name: 'PrivacyPolicy',
-    component:PrivacyPolicy,
-  },
-  {
-    path: '/cPolicy',
-    name: 'CookiePolicy',
-    component:CookiePolicy,
-  },
-  {
-    path: '/faqs',
-    name: 'Faqs',
-    component:Faqs,
-  },
-  {
-    path: '/contact',
-    name: 'ContactUs',
-    component:ContactUs,
-  },
-  {
-    path: '/help',
-    name: 'Help',
-    component:Help,
-  },
-
-
-
-  
+  }
 ]
 
 const router = new VueRouter({

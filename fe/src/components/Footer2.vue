@@ -26,7 +26,6 @@
             <v-btn
               plain
               dark
-              to="/terms"
             >
               Terms & Condition
             </v-btn>
@@ -34,7 +33,6 @@
             <v-btn
               plain
               dark
-              to="/policy"
             >
               Privacy Policy
             </v-btn>
@@ -42,7 +40,6 @@
             <v-btn
               plain
               dark
-              to="/cPolicy"
             >
               Cookie Policy
             </v-btn>
@@ -63,7 +60,6 @@
             <v-btn
               plain
               dark
-              to='/faqs'
             >
               FAQs
             </v-btn>
@@ -71,7 +67,6 @@
             <v-btn
               plain
               dark
-              to='/contact'
             >
               Contact Us
             </v-btn>
