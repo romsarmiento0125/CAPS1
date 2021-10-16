@@ -18,10 +18,6 @@ use App\Http\Controllers\testcontroller;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 Route::get('/name', [testcontroller::class, 'index']);
 Route::prefix('/name')->group( function () {
     Route::post('/store', [testcontroller::class, 'store']);
@@ -56,3 +52,9 @@ Route::prefix('/additems')->group( function () {
     Route::put('/{id}', [itemAddController::class, 'update']);
     Route::delete('/{id}', [itemAddController::class, 'destroy']);
 });
+
+// Route::resource('name', testcontroller::class);
+// Route::resource('clients', clientcontroller::class);
+// Route::resource('login', login::class);
+// Route::resource('products', productcontroller::class);
+// Route::resource('additems', itemAddController::class);

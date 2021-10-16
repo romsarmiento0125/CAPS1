@@ -18,6 +18,7 @@
 
   export default {
     name: 'LoginSignup',
+    title: 'erich',
 
     components: {
       'ls-logincom': Logincom,

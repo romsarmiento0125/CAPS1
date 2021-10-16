@@ -86,6 +86,7 @@
   
   export default{
     name: 'Home',
+    title: "Erich",
 
     components: {
       'home-navbar1': NavBar1,
@@ -138,4 +139,6 @@
     },
     
   }
+
+  
 </script>

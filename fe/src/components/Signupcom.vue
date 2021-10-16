@@ -97,7 +97,6 @@
                   outlined
                   dense
                   class="mt-1"
-                  :counter="11"
                   :rules="mobileNumRules"
                   required
                 ></v-text-field>
@@ -114,7 +113,6 @@
                   outlined
                   dense
                   class="mt-1"
-                  :counter="80"
                   :rules="homeRules"
                   required
                 ></v-text-field>
@@ -131,7 +129,6 @@
                   outlined
                   dense
                   class="mt-1"
-                  :counter="20"
                   :rules="cityRules"
                   required
                 ></v-text-field>
@@ -148,7 +145,6 @@
                   outlined
                   dense
                   class="mt-1"
-                  :counter="20"
                   :rules="provinceRules"
                   required
                 ></v-text-field>

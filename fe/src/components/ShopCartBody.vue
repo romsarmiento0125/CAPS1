@@ -211,8 +211,7 @@
               <div
                 class="d-flex"
               >
-                <p class="my-0">Total</p>
-                <p class="my-0">({{totalItem}}):</p>
+                <p class="my-0">Total:</p>
               </div>
               
               <div
@@ -252,7 +251,6 @@
       //   {id: 1, item_name: "Pancake Plus", item_price: 79.95, item_image: 'pancake.jpg'},
       //   {id: 2, item_name: "Gardenia", item_price: 67.50, item_image: 'gardenia.png'},
       // ],
-      counterQuantity: 1,
       customerSelectedItems: [],
       selectAllCheckBox: false,
       itemQuantity: [],
@@ -265,7 +263,6 @@
       itemCount: [],
       itemImage: [],
       totalPrice: 0,
-      totalItem: 0,
     }),
 
     methods: {
@@ -281,16 +278,30 @@
       addQuantity(n) {
         console.log(n);
         this.itemQuantity.splice(n, 1, (this.itemQuantity[n] + 1))
+        this.updatingTotalPrice();
       },
       minusQuantity(n) {
         console.log(n);
         this.itemQuantity.splice(n, 1, (this.itemQuantity[n] - 1))
         console.log(this.itemQuantity[n]);
+        this.updatingTotalPrice();
         // if(this.itemQuantity[n] == (x * -1)){
         //   console.log('Stop');
         //   this.minusBtnCond = true;
         //   //this.itemQuantity.splice(n, 1, 0);
         // }
+      },
+      updatingTotalPrice() {
+        console.log("Function Updating Total Price");
+        console.log("This is item quantity " + this.itemQuantity);
+        console.log("This is item price length " + this.itemPrice.length);
+        this.totalPrice = 0;
+        for(var k = 0; k < this.itemPrice.length; k++){
+          if(this.itemName[k] != ""){
+            this.totalPrice = this.totalPrice + (this.itemPrice[k] * (this.itemCount[k] + this.itemQuantity[k]));
+            console.log("Total Price: " + this.totalPrice);
+          }
+        }
       },
       // deleteItem(itemId) {
       //   console.log("Delete item");
@@ -298,44 +309,48 @@
       //   this.$store.commit('deleteItem', itemId);
       // }
       itemCheckout(id, name, desc, price, count, image) {
+        console.log("********************");
         console.log("item checkout " + id + name + price + count);
         console.log(this.customerSelectedItems[id]);
-        console.log(this.itemQuantity[id]);
+        console.log("This itemQuantity " + this.itemQuantity[id]);
         this.totalPrice = 0;
         this.totalItem = 0;
         if(this.customerSelectedItems[id]) {
+          console.log("indexCounter " + this.indexCounter);
           console.log("add item");
-          this.itemId.push(id);
-          this.itemName.push(name);
-          this.itemDesc.push(desc);
-          this.itemPrice.push(price);
-          this.itemImage.push(image);
-          this.itemCount.push(count + this.itemQuantity[id]);
+          this.itemId.push("");
+          this.itemName.push("");
+          this.itemDesc.push("");
+          this.itemPrice.push("");
+          this.itemImage.push("");
+          this.itemCount.push("");
+          this.itemId.splice(id, 1, id);
+          this.itemName.splice(id, 1, name);
+          this.itemDesc.splice(id, 1, desc);
+          this.itemPrice.splice(id, 1, price);
+          this.itemImage.splice(id, 1, image);
+          this.itemCount.splice(id, 1, (count + this.itemQuantity[id])); //Item Quantity have a problem
         }
         else{
           //remove item not function well
           //logical error
           console.log("remove item");
-          alert("Uncheck item not functioning well");
-          this.itemId.splice(id, 1);
-          this.itemName.splice(id, 1);
-          this.itemDesc.splice(id, 1);
-          this.itemPrice.splice(id, 1);
-          this.itemImage.splice(id, 1);
-          this.itemCount.splice(id, 1);
+          this.itemId.splice(id, 1, "");
+          this.itemName.splice(id, 1, "");
+          this.itemDesc.splice(id, 1, "");
+          this.itemPrice.splice(id, 1, "");
+          this.itemImage.splice(id, 1, "");
+          this.itemCount.splice(id, 1, "");
           this.totalPrice = 0;
           this.totalItem = 0;
         }
-        console.log(this.itemId + " " + this.itemName + " " + this.itemPrice + " " + this.itemCount);
+        console.log("The Data " + this.itemId + " " + this.itemName + " " + this.itemPrice + " " + this.itemCount);
         console.log("-----------------");
-        console.log(this.itemPrice);
-        console.log(this.itemCount);
-        for(var k = 0; k < this.itemPrice.length; k++){
-          this.totalPrice = this.totalPrice + (this.itemPrice[k] * this.itemCount[k]);
-          console.log("Total Price: " + this.totalPrice);
-          this.totalItem = this.totalItem + this.itemCount[k];
-          console.log("Total Item: " + this.totalItem);
-        }
+        console.log("This is item price " + this.itemPrice);
+        console.log("This is item count " + this.itemCount);
+        console.log("Calling updatingTotalPrice function");
+        this.updatingTotalPrice();
+        console.log("********************");
       },
       checkAllCheckBox() {
         console.log("Check all");
@@ -354,7 +369,38 @@
         }
       },
       checkOutItems() {
+        console.log("OOOOOOOOOOOOOOOOOOOOOOO");
         console.log("Checkout button");
+        var id = this.itemId;
+        var name = this.itemName;
+        var desc = this.itemDesc;
+        var price = this.itemPrice;
+        var count = this.itemCount;
+        var image = this.itemImage;
+        console.log("var id " + id);
+        console.log("var name " + name);
+        this.itemId = [];
+        this.itemName = [];
+        this.itemDesc = [];
+        this.itemPrice = [];
+        this.itemCount = [];
+        this.itemImage = [];
+        for(var i = 0; i < id.length; i++){
+          if(name[i] != ""){
+            this.itemId[i] = id[i];
+            this.itemName[i] = name[i];
+            this.itemDesc[i] = desc[i];
+            this.itemPrice[i] = price[i];
+            this.itemCount[i] = count[i];
+            this.itemImage[i] = image[i];
+          }
+        }
+        console.log("This itemId " + this.itemId);
+        console.log("This itemName " + this.itemName);
+        console.log("This itemDesc " + this.itemDesc);
+        console.log("This itemPrice " + this.itemPrice);
+        console.log("This itemCount " + this.itemCount);
+        console.log("This itemImage " + this.itemImage);
         this.$emit('emitEventCB', false, this.itemId, this.itemName, this.itemDesc ,this.itemPrice, this.itemCount, this.itemImage);
       }
     },

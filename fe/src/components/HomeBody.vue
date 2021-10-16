@@ -47,7 +47,6 @@
                   <v-card-subtitle class="ma-0 pa-0">{{item.Product_Description}}</v-card-subtitle>
                 </div>
 
-                
 
                 <v-card-actions
                   class="ma-0 py-0 pr-0"

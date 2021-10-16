@@ -24,7 +24,7 @@
                 <v-tab>All</v-tab>
                 <v-tab
                   @click="getOrder"
-                >To Pack</v-tab>
+                >To Prepare</v-tab>
                 <v-tab>To Receive</v-tab>
                 <v-tab>To Pickup</v-tab>
                 <v-tab>Complete</v-tab>
@@ -47,12 +47,41 @@
             class=""
           >
             <v-list-item-group
-              class=""
+              class="border ma-2 rounded-lg"
             >
+              <v-row>
+                <v-col
+                  cols="6"
+                >
+                  <div
+                    class="pt-4 pl-4"
+                  >
+                    <h2>Get by Sat 18 Sep - Fri 24 Sep</h2>
+                  </div>
+                </v-col>
+                <v-col
+                  cols="6"
+                >
+                  <div
+                    class="pt-4 pr-4 d-flex justify-end"
+                  >
+                    <h2>To Prepare</h2>
+                  </div>
+                </v-col>
+              </v-row>
+
               <v-list-item
                 v-for="order in items"
                 :key="order.id"
+                class=""
               >
+                <!--  
+                <v-list-item-content
+                  class="border ma-2 rounded-lg"
+                >
+                -->
+                
+
                 <v-list-item-content
                   class="border ma-2 rounded-lg"
                 >
@@ -74,7 +103,7 @@
                       </div>
                     </v-col>
                     <v-col
-                      cols="6"
+                      cols="7"
                       class="d-flex align-center"
                     >
                       <div>
@@ -115,21 +144,110 @@
                       </div>
                     </v-col>
                     <v-col
-                      cols="4"
-                      class="d-flex align-center justify-center blue darken-1"
+                      cols="3"
+                      class="d-flex align-center justify-center"
                     >
                       <div
-                        class=""
+                        class="d-flex flex-column"
                       >
-                        <h1
-                          class="white--text pa-4"
-                        >{{order.orderTag}}</h1>
+                        <v-btn
+                          class="ma-3"
+                          color="#42A5F5"
+                          dark
+                        >
+                          <h3>Buy Again</h3>
+                        </v-btn>
+
+                        <v-btn
+                          class="ma-3"
+                          color="#EF5350"
+                          dark
+                        >
+                          <h4>Cancel</h4>
+                          
+                        </v-btn>
+                      </div>
+                    </v-col>
+                    <!--
+                    <v-col
+                      cols="4"
+                      class="d-flex align-center justify-center "
+                    >
+                      <div
+                        class="d-flex flex-column"
+                      >
+                        <v-btn
+                          class="ma-3"
+                        >
+                          <h3>Buy Again</h3>
+                        </v-btn>
+
+                        <v-btn
+                          class="ma-3"
+                        >
+                          <h3>Cancel</h3>
+                          
+                        </v-btn>
                       </div>
                       
                     </v-col>
+                    -->
                   </v-row>
                 </v-list-item-content>
               </v-list-item>
+
+              <v-row>
+                <v-col
+                  cols="6"
+                >
+                  <div
+                    class="pt-4 pl-4"
+                  >
+                    <div
+                      class="d-flex"
+                    >
+                      <h2>Shipping Fee: </h2>
+                      <v-icon
+                        color="blue"
+                      >mdi-currency-php</v-icon>
+                      <h2
+                        class="blue--text"
+                      >70</h2>
+                    </div>
+
+                    <div
+                      class="d-flex"
+                    >
+                      <h2>Vat: </h2>
+                      <v-icon
+                        color="blue"
+                      >mdi-currency-php</v-icon>
+                      <h2
+                        class="blue--text"
+                      >10</h2>
+                    </div>
+                  </div>
+                </v-col>
+                <v-col
+                  cols="6"
+                >
+                  <div
+                    class="pt-4 pr-4 d-flex justify-end"
+                  >
+                    <div
+                      class="d-flex"
+                    >
+                      <h1>Total: </h1>
+                      <v-icon
+                        color="blue"
+                      >mdi-currency-php</v-icon>
+                      <h1
+                        class="blue--text"
+                      >1000</h1>
+                    </div>
+                  </div>
+                </v-col>
+              </v-row>
             </v-list-item-group>
           </v-list>
         </div>
@@ -142,12 +260,12 @@
   export default {
     data: () => ({
       items: [
-        {id: 0, item_name: "", item_desc: "", item_price: 0, item_count: 0, item_image: '', orderTag: ''},
+        {id: 0, item_name: "", item_desc: "", item_price: 0, item_count: 0, item_image: 'yakult.jpg', orderTag: ''},
+        // {id: 0, item_name: "Yakult", item_desc: "Masarap na masarap", item_price: 45, item_count: 1, item_image: 'yakult.jpg', orderTag: 'To Pickup'},
         // {id: 1, item_name: "Clover", item_desc: "Masarap na masarap", item_price: 15, item_count: 2, item_image: 'clover.jpg', orderTag: 'To Pack'},
         // {id: 2, item_name: "Chippy", item_desc: "Masarap na masarap", item_price: 12, item_count: 1, item_image: 'chippy.jpg', orderTag: 'Complete'},
         // {id: 3, item_name: "Pancake Plus", item_desc: "Masarap na masarap", item_price: 79.95, item_count: 1, item_image: 'pancake.jpg', orderTag: 'Complete'},
         // {id: 4, item_name: "Tang", item_desc: "Masarap na masarap", item_price: 17, item_count: 10, item_image: 'tang.jpg', orderTag: 'To Receive'},
-        // {id: 5, item_name: "Yakult", item_desc: "Masarap na masarap", item_price: 45, item_count: 1, item_image: 'yakult.jpg', orderTag: 'To Pickup'},
       ],
       orders: {},
       customerOrders: {},
