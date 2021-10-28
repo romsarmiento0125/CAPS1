@@ -60,7 +60,9 @@
                   class="white--text align-end"
                 >
                   <v-card-title>
-                    {{product.ptitle}}
+                    <h3>
+                      {{product.ptitle}}
+                    </h3>
                   </v-card-title>
 
                 </v-img>
@@ -113,10 +115,10 @@
         },
       ],
       products: [
-        { pname: "Bakery.jpg", ptitle: "NAME" },
-        { pname: "Beverage.jpg", ptitle: "NAME" },
-        { pname: "Dairy.jpg", ptitle: "NAME" },
-        { pname: "Egg.jpg", ptitle: "NAME" },
+        { pname: "Bakery.jpg", ptitle: "Bread" },
+        { pname: "Beverage.jpg", ptitle: "Beverage" },
+        { pname: "Dairy.jpg", ptitle: "Dairy" },
+        { pname: "meats.jpg", ptitle: "Meat" },
       ],
       navCondition: true, 
     }),
